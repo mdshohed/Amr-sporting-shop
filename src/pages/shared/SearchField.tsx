@@ -19,7 +19,7 @@ const SearchField = () => {
                 placeholder=""
                 id=""
               />
-              <div className="flex w-10 items-center justify-center rounded-tl-md rounded-bl-md border-l border-gray-200  text-black">
+              <div className="flex w-12 items-center justify-center  rounded-tr-md rounded-br-md border=none bg-lime-300  text-black">
                 <Search />
               </div>
             </div>

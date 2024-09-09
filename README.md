@@ -13,4 +13,5 @@
 - @reduxjs/toolkit 
 - react-redux
 - lucide-react(icons)
+- react-rating
 

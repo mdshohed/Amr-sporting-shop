@@ -10,12 +10,15 @@ import { Clapperboard, Dumbbell, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchField from "./SearchField";
+import Notification from "./Notification";
+import SwitchButton from "./SwitchButton";
+
 
 export default function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="mx-auto container  max-w-7xl px-4">
+    <div className="mx-auto container max-w-7xl px-4">
       <div className="flex  items-center justify-between border-b-2 py-3 ">
         <Link to="/" className="flex items-center">
           <h3 className="font-extrabold bg-lime-400  text-gray-700 p-2 rounded-md">
@@ -29,6 +32,8 @@ export default function Navbar() {
           />
         </Link>
         <SearchField></SearchField>
+        <Notification></Notification>
+        <SwitchButton></SwitchButton>
         <NavigationMenu className="">
           <NavigationMenuList>
             <div className="flex justify-end items-center">
