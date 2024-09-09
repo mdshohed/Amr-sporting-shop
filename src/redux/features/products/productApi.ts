@@ -2,18 +2,14 @@ import { baseApi } from "../../api/baseApi";
 
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) =>( {
-    login: builder.mutation({
-      query: ( userInfo ) => {
-        console.log(userInfo);
-        
-        return {
-          url: '/product',
-          method: 'POST',
-          body: userInfo, 
-        }
+    getAllProducts: builder.query({
+      query: () => ({
+          url: '/products',
+          method: 'GET',
+        })
       }
-    })
+    )
   })
 })
 
-export const { useLoginMutation } = productApi; 
+export const { useGetAllProductsQuery } = productApi; 

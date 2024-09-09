@@ -58,7 +58,7 @@ export function ContactUs() {
                 </FormDescription>
                 <div className="flex md:flex-row justify-center py-3">
                   <FormControl className="md:me-3">
-                    <Input className="max-w-96" placeholder="Email Address" {...field} />
+                    <Input className="max-w-96 " placeholder="Email Address" {...field} />
                   </FormControl>
                   <FormMessage/>
                   <Button type="submit" >Submit</Button>

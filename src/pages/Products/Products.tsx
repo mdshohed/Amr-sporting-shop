@@ -8,20 +8,24 @@ import {
 } from "@/components/ui/select"
 
 import { TProduct } from "@/types/types";
-import { useEffect, useState } from "react";
 import SearchField from "../shared/SearchField";
 import { Filter } from "lucide-react";
 import PaginationComponent from "../shared/Pagination";
+import { useGetAllProductsQuery } from "@/redux/features/products/productApi";
 
 const Products = () => {
-  const [data, setData] = useState([]);
-  useEffect(()=>{
-    fetch('http://localhost:5000/api/products')
-    .then(res=>res.json())
-    .then(res=>setData(res.data))
-    .catch(err=>console.log(err))
-    .finally()
-  },[])
+  const {data, error} = useGetAllProductsQuery(undefined); 
+  console.log("AllProduct2", data, error);
+  
+
+  // const [data, setData] = useState([]);
+  // useEffect(()=>{
+  //   fetch('http://localhost:5000/api/products')
+  //   .then(res=>res.json())
+  //   .then(res=>setData(res.data))
+  //   .catch(err=>console.log(err))
+  //   .finally()
+  // },[])
 
   return (
     <div className="mx-auto container max-w-7xl px-4 my-[35px]">
@@ -52,7 +56,7 @@ const Products = () => {
       </div>
        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
         {
-          data?.map( (item: TProduct)=>(
+          data?.data?.map( (item: TProduct)=>(
             <ProductCard item={item}></ProductCard>
           ))
         }
