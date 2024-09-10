@@ -5,6 +5,7 @@ import Products from "@/pages/Products/Products";
 import About from "@/pages/About/About";
 import ProductView from "@/pages/Products/Product/ProductView";
 import NotFound from "@/pages/shared/NotFound";
+import ShoppingCard from "@/pages/ShoppingCard/ShoppingCard";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/card',
-        element: <div>Card</div>
+        element: <ShoppingCard></ShoppingCard>
       },
       {
         path: "*",

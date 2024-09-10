@@ -1,8 +1,9 @@
 import { useGetSingleProductQuery } from '@/redux/features/products/productApi';
-import { DessertIcon } from 'lucide-react';
+
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { number } from 'zod';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const ProductView = () => {
   const { id } = useParams(); 
@@ -56,11 +57,19 @@ const ProductView = () => {
           <div className="relative">
             <div className="md:col-span-3 text-center">
               <div className="lg:h-[450px] p-4 relative before:absolute before:inset-0 before:bg-black before:opacity-20 before:rounded">
-                <img
-                  src="https://readymadeui.com/images/sunglass7.webp"
-                  alt="Product"
-                  className="lg:w-11/12 w-full h-full rounded object-contain object-top"
-                />
+                
+                
+
+                    <PhotoProvider>
+                      <PhotoView src="https://readymadeui.com/images/sunglass7.webp">
+                        <img
+                          src="https://readymadeui.com/images/sunglass7.webp"
+                          alt="Product"
+                          // className="lg:w-11/12 w-full h-full rounded object-contain object-top"
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  
               </div>
 
               <div className="flex flex-wrap gap-4 mx-auto mt-4">
