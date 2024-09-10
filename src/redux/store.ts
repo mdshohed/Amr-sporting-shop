@@ -39,15 +39,25 @@
 
 // export const persistor = persistStore(store); 
 
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/baseApi";
-import { persistStore } from "redux-persist";
+import { persistReducer,persistStore } from "redux-persist";
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
+// const persistConfig = {
+//   key: 'root',
+//   storage,
+// }
+
+// const rootReducer = combineReducers({
+//   userData: persistReduce(persistConfig.key);
+// })
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
+  middleware: (getDefaultMiddleware) =>getDefaultMiddleware({ serializableCheck: false }).concat(baseApi.middleware)
 });
 
 
@@ -56,4 +66,4 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export type AppStore = typeof store;
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);

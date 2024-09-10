@@ -14,4 +14,14 @@
 - react-redux
 - lucide-react(icons)
 - react-rating
+- react-photo-view
+
+
+
+### Note:
+
+- menubar 
+- drawer 
+- sheet
+- slider
 

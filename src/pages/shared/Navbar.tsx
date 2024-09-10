@@ -19,7 +19,7 @@ export default function Navbar() {
 
   return (
     <div className="mx-auto container max-w-7xl px-4">
-      <div className="flex  items-center justify-between border-b-2 py-3 ">
+      <div className="flex items-center justify-between border-b-2 py-5 ">
         <Link to="/" className="flex items-center">
           <h3 className="font-extrabold bg-lime-400  text-gray-700 p-2 rounded-md">
             Amr-Sport{" "}

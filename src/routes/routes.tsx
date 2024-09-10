@@ -3,6 +3,8 @@ import MainLayouts from "@/components/layouts/MainLayouts";
 import Home from "@/pages/Home/Home";
 import Products from "@/pages/Products/Products";
 import About from "@/pages/About/About";
+import ProductView from "@/pages/Products/Product/ProductView";
+import NotFound from "@/pages/shared/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +17,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/all-sporting-goods',
-        element: <Products></Products>
+        element: <Products></Products>,
+      },
+      {
+        path: '/all-sporting-goods/:id',
+        element: <ProductView></ProductView>,
       },
       {
         path: '/manage-sporting-goods',
@@ -28,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/card',
         element: <div>Card</div>
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ]
   },

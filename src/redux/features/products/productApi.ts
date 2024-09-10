@@ -8,8 +8,18 @@ const productApi = baseApi.injectEndpoints({
           method: 'GET',
         })
       }
+    ),
+    getSingleProduct: builder.query({
+      query: (id) => {
+        console.log("reduxId",id);
+        
+        return{
+          url: `/products/${id}`,
+          method: 'GET',
+        }}
+      }
     )
   })
 })
 
-export const { useGetAllProductsQuery } = productApi; 
+export const { useGetAllProductsQuery, useGetSingleProductQuery } = productApi; 
