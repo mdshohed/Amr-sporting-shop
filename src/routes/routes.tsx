@@ -9,7 +9,6 @@ import ShoppingCard from "@/pages/ShoppingCard/ShoppingCard";
 import ManageProduct from "@/pages/ManageProduct/ManageProduct";
 import Checkout from "@/pages/Checkout/Checkout";
 import OrderSuccess from "@/pages/Payment/OrderSuccess";
-import CardMethod from "@/pages/PaymentMethods/CardMethod";
 import Payment from "@/pages/Payment/Payment";
 
 const router = createBrowserRouter([

@@ -20,10 +20,10 @@ const ProductCard = ({ item }: { item: TProduct }) => {
     <div>
       <Card className=" text-white border border-gray-200 rounded-none p-3 ">
         {/* <Link to={`/all-sporting-goods`}> */}
-        <CardHeader className="">
+        <CardHeader className="max-h-[300px]">
           <img
-            src={cardImg}
-            className=" object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
+            src={item.image ? item.image : cardImg}
+            className=" overflow-hidden rounded-t-lg transition-transform duration-300 hover:scale-105"
             alt="image"
           />
         </CardHeader>
@@ -39,6 +39,10 @@ const ProductCard = ({ item }: { item: TProduct }) => {
           <p className="text-3xl mt-2 font-medium">
             <span className="font-light">$</span>
             {item?.price}
+          </p>
+          <p className="text-lg mt-2 font-medium">
+            <span className="font-light">In-Stock: </span>
+            {item?.stockQuantity}
           </p>
           <p className="font-mono mt-2 text-sm text-white bg-red-600 rounded-sm w-[90px] text-center flex justify-center items-center gap-1">
             {/* <Clock className="w-[12px] "/> */}

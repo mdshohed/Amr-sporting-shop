@@ -395,9 +395,10 @@ const ShoppingCard = () => {
 
           <div className="mt-8 space-y-2">
             <button
+              disabled={ !products.length }
               type="button"
               onClick={handleNavigate}
-              className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
+              className="text-sm px-4 py-2.5 w-full disabled:bg-gray-500 font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
             >
               Proceed to checkout Button
             </button>

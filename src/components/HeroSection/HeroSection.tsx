@@ -59,7 +59,7 @@ export function HeroSection() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 text-lime-500 bg-opacity-25 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
+        <CarouselPrevious className="absolute  left-4 top-1/2 transform -translate-y-1/2 text-lime-500 bg-opacity-25 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
           &#9664;
         </CarouselPrevious>
         <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">

@@ -37,7 +37,7 @@ const PaginationComponent = () => {
 
       </div>
       
-      <div>Showing 1 to 20 of 1000 (50 Pages)</div>
+      <div>Showing 1 to 20 of 100</div>
     </div>
    
   );

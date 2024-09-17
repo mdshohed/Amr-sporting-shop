@@ -21,8 +21,8 @@ import FilterBox from "@/components/FilterBox/FilterBox";
 import { Filter } from "lucide-react";
 
 const Products = () => {
-  const { data, error } = useGetAllProductsQuery(undefined);
-  console.log("AllProduct2", data, error);
+  const { data: products, error } = useGetAllProductsQuery(undefined);
+  console.log("AllProduct2", products, error);
 
   // const [data, setData] = useState([]);
   // useEffect(()=>{
@@ -69,7 +69,7 @@ const Products = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
-        {data?.data?.map((item: TProduct) => (
+        {products?.data?.map((item: TProduct) => (
           <ProductCard item={item}></ProductCard>
         ))}
       </div>

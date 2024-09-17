@@ -1,5 +1,6 @@
 import { clearCart } from "@/redux/features/card/cardSlice";
-import { useAddOrderInfoMutation } from "@/redux/features/order/orderApi";
+import { useAddOrderInfoMutation } from "@/redux/features/products/productApi";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -299,8 +300,8 @@ const Checkout = () => {
             </div>
           </div>
           <button 
-          disabled={!products.length} 
-          onClick={handlePlaceOrder} className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+            disabled={!products.length} 
+            onClick={handlePlaceOrder} className="mt-4 mb-8 w-full disabled:bg-gray-600 rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
             Place Order
           </button>
         </div>
