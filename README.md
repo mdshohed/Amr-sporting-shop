@@ -15,6 +15,7 @@
 - lucide-react(icons)
 - react-rating
 - react-photo-view
+- react-stripe.js
 
 
 

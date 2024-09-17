@@ -4,49 +4,30 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { useAppDispatch } from '@/redux/hooks';
+import { addToCart } from '@/redux/features/card/cardSlice';
+import { toast } from 'sonner';
 
 const ProductView = () => {
   const { id } = useParams(); 
-  const { data, error } = useGetSingleProductQuery( id ); 
-  console.log(data);
+  const { data } = useGetSingleProductQuery( id ); 
+  const dispatch = useAppDispatch()
+
+  const [quantity, setQuantity] = useState(1); 
   
-  // const { name,description,category,brand,stockQuantity,rating,productDescription,price,image,isAvailable } = data?.data; 
-  console.log("productDetails", data);
+  // const { name,description,category,brand,stockQuantity,rating,productDescription,price,image,isAvailable } = data?.data;   
   
+  // const handleQuantityChange = (e: number) => setQuantity(Math.max(1, e.target.value));
+
+  const handleAddToCart = (product: any) =>{
+    const payload = {product, quantity}; 
+    dispatch(addToCart(payload))
+    toast.success('Added to Card Successfully'); 
+    setQuantity(1);
+  }
+
+  console.log("data", data);
   
-  const [selectedColor, setSelectedColor] = useState('green'); // Default color
-  const [selectedSize, setSelectedSize] = useState('S'); // Default size
-  const [quantity, setQuantity] = useState(1);
-
-  const colors = [
-    { name: 'Green', value: '#10B981' },
-    { name: 'Yellow', value: '#FBBF24' },
-    { name: 'Red', value: '#F43F5E' },
-    { name: 'Blue', value: '#2563EB' },
-  ];
-
-  const sizes = ['56 cm (S)', '67 cm (M)', '77 cm (L)'];
-
-  const handleColorClick = (color: string) => setSelectedColor(color);
-  const handleSizeClick = (size: string) => setSelectedSize(size);
-  const handleQuantityChange = (e) => setQuantity(Math.max(1, e.target.value));
-
-//   {
-//     "_id": "66debef4cbbea440ce4cb67e",
-//     "name": "Basketball",
-//     "description": "Indoor/outdoor basketball with a composite leather cover",
-//     "category": "Sports",
-//     "brand": "Spalding",
-//     "stockQuantity": 200,
-//     "rating": 4.8,
-//     "productDescription": "Great grip and bounce, designed for both indoor and outdoor courts.",
-//     "price": 30,
-//     "image": "https://example.com/images/basketball.jpg",
-//     "isAvailable": true,
-//     "createdAt": "2024-09-09T09:25:08.549Z",
-//     "updatedAt": "2024-09-09T09:25:08.549Z",
-//     "__v": 0
-// }
 
   return (
     <section className="py-10 lg:py-24 relative">
@@ -57,19 +38,15 @@ const ProductView = () => {
           <div className="relative">
             <div className="md:col-span-3 text-center">
               <div className="lg:h-[450px] p-4 relative before:absolute before:inset-0 before:bg-black before:opacity-20 before:rounded">
-                
-                
-
-                    <PhotoProvider>
-                      <PhotoView src="https://readymadeui.com/images/sunglass7.webp">
-                        <img
-                          src="https://readymadeui.com/images/sunglass7.webp"
-                          alt="Product"
-                          // className="lg:w-11/12 w-full h-full rounded object-contain object-top"
-                        />
-                      </PhotoView>
-                    </PhotoProvider>
-                  
+                <PhotoProvider>
+                  <PhotoView src="https://readymadeui.com/images/sunglass7.webp">
+                    <img
+                      src="https://readymadeui.com/images/sunglass7.webp"
+                      alt="Product"
+                      className="lg:w-11/12 w-full h-full rounded object-contain object-top"
+                    />
+                  </PhotoView>
+                </PhotoProvider>
               </div>
 
               <div className="flex flex-wrap gap-4 mx-auto mt-4">
@@ -130,8 +107,12 @@ const ProductView = () => {
               </div>
             </div>
 
-            <p className="text-gray-500 text-base font-normal mb-8">
+            <p className="text-gray-500 text-base font-normal">
               { data?.data?.description }
+            </p>
+
+            <p className="text-gray-500 text-lg font-medium">
+              Stock-Quantity: { data?.data?.stockQuantity }
             </p>
 
             {/* Color Options */}
@@ -175,7 +156,7 @@ const ProductView = () => {
               <div className="flex items-center justify-center w-full">
                 <button
                   className="group py-4 px-6 border border-gray-400 rounded-l-full shadow-sm transition-all duration-500 hover:shadow-gray-300 hover:bg-gray-50"
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  onClick={() => setQuantity( Math.max(1, quantity - 1))}
                 >
                   <svg
                     className="stroke-gray-700 transition-all duration-500 group-hover:stroke-black"
@@ -189,15 +170,14 @@ const ProductView = () => {
                   </svg>
                 </button>
                 <input
-                  type="number"
-                  value={quantity}
-                  onChange={handleQuantityChange}
+                  type="text"
+                  value={ quantity }
                   className="font-semibold text-gray-900 text-lg py-[13px] px-6 w-full lg:max-w-[118px] border-y border-gray-400 bg-transparent text-center"
                   min="1"
                 />
                 <button
                   className="group py-4 px-6 border border-gray-400 rounded-r-full shadow-sm transition-all duration-500 hover:shadow-gray-300 hover:bg-gray-50"
-                  onClick={() => setQuantity(quantity + 1)}
+                  onClick={() => setQuantity( quantity + 1)}
                 >
                   <svg
                     className="stroke-gray-700 transition-all duration-500 group-hover:stroke-black"
@@ -213,7 +193,12 @@ const ProductView = () => {
                 </button>
               </div>
 
-              <button className="w-full bg-indigo-600 text-white py-4 rounded-full font-semibold shadow-lg transition-all duration-300 hover:bg-indigo-700">
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleAddToCart(data?.data)
+                }}
+                className="w-full bg-indigo-600 text-white py-4 rounded-full font-semibold shadow-lg transition-all duration-300 hover:bg-indigo-700">
                 Add to Cart
               </button>
             </div>

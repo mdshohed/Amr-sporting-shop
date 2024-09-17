@@ -42,22 +42,27 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/baseApi";
 import { persistReducer,persistStore } from "redux-persist";
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage' 
+import cartReducer from "./features/card/cardSlice";
 
-// const persistConfig = {
-//   key: 'root',
-//   storage,
-// }
+const persistUserConfig = {
+  key: "card",
+  storage,
+};
 
-// const rootReducer = combineReducers({
-//   userData: persistReduce(persistConfig.key);
-// })
+const persistedCardReducer = persistReducer(persistUserConfig, cartReducer);
+
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
+    cart: persistedCardReducer,
   },
-  middleware: (getDefaultMiddleware) =>getDefaultMiddleware({ serializableCheck: false }).concat(baseApi.middleware)
+
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }).concat(
+      baseApi.middleware
+    ),
 });
 
 
@@ -66,4 +71,4 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export type AppStore = typeof store;
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

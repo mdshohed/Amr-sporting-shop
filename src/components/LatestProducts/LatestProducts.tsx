@@ -22,8 +22,8 @@ const LatestProducts = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
         {
-          data?.map( (item: TProduct)=>(
-            <ProductCard item={item}></ProductCard>
+          data?.map( (item: TProduct, index:number)=>(
+            <ProductCard key={index} item={item}></ProductCard>
           ))
         }
        

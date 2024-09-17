@@ -9,7 +9,7 @@ const Category = () => {
         <h1 className="text-[25px] sm:text-[35px] lg:text-[45px]">Featured Category</h1>
         <p className="text-[15px] lg:text-[18px]">Get Your Desired Product from Featured Category!</p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-auto">
+      <div className="flex  gap-3 mx-auto">
         <CategoryCard></CategoryCard>
         <CategoryCard></CategoryCard>
         <CategoryCard></CategoryCard>

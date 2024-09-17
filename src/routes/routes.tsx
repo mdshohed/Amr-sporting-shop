@@ -6,6 +6,11 @@ import About from "@/pages/About/About";
 import ProductView from "@/pages/Products/Product/ProductView";
 import NotFound from "@/pages/shared/NotFound";
 import ShoppingCard from "@/pages/ShoppingCard/ShoppingCard";
+import ManageProduct from "@/pages/ManageProduct/ManageProduct";
+import Checkout from "@/pages/Checkout/Checkout";
+import OrderSuccess from "@/pages/Payment/OrderSuccess";
+import CardMethod from "@/pages/PaymentMethods/CardMethod";
+import Payment from "@/pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/manage-sporting-goods',
-        element: <div>Manage Sporting goods</div>
+        element: <ManageProduct></ManageProduct>
       },
       {
         path: '/about-us',
@@ -35,6 +40,18 @@ const router = createBrowserRouter([
       {
         path: '/card',
         element: <ShoppingCard></ShoppingCard>
+      },
+      {
+        path: '/checkout/card',
+        element: <Checkout></Checkout>
+      },
+      {
+        path: '/payment/card',
+        element: <Payment></Payment>
+      },
+      {
+        path: '/success',
+        element: <OrderSuccess></OrderSuccess>
       },
       {
         path: "*",
