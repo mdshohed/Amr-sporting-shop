@@ -44,7 +44,7 @@ export function ContactUs() {
   }
 
   return (
-    <div className="flex justify-center py-10">
+    <div className="flex justify-center my-[100px]">
        <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
           <FormField

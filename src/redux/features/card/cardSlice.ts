@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // Define the initial state using that type
+ type TForm = {
+  name: '',
+  email: '',
+  phone: '',
+  address: '',
+ }
 const initialState = {
   products: [] as any,
   selectedItems: 0,
@@ -8,14 +14,14 @@ const initialState = {
   tax: 0,
   taxRate: 0.05,
   grandTotal: 0,
+  checkoutForm: {} as TForm, 
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action) => {   
-         
+    addToCart: (state, action) => {     
       const isExist = state.products.find(
         (product: any) => product._id === action.payload.product._id
       );
@@ -47,12 +53,13 @@ export const cartSlice = createSlice({
       state.grandTotal = selectGrandTotal(state);
     },
 
-    deleteFromCard: (state, action) => {   
+    checkoutFormData: (state: any, action) => {
+      state.checkout = action.payload; 
+    },
 
+    deleteFromCard: (state, action) => {   
       state.products = state.products.filter( (product:any)=> product._id !== action.payload);
       // console.log("delete", value );
-      
-      
       state.selectedItems = selectSelectedItems(state);
       state.totalPrice = selectTotalPrice(state);
       state.tax = selectTax(state);
@@ -64,6 +71,7 @@ export const cartSlice = createSlice({
       state.totalPrice=0;
       state.tax=0;
       state.grandTotal=0;
+      state.checkoutForm = {} as TForm; 
     }
   },
 });
@@ -85,6 +93,6 @@ export const selectGrandTotal = (state: any) => {
   return selectTotalPrice(state) + selectTotalPrice(state) * state.taxRate;
 };
 
-export const { addToCart, updateQuantity, clearCart, deleteFromCard } = cartSlice.actions;
+export const { addToCart, updateQuantity, clearCart, deleteFromCard, checkoutFormData } = cartSlice.actions;
 
 export default cartSlice.reducer;

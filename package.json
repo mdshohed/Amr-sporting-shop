@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-hover-card": "^1.1.1",
@@ -30,6 +31,7 @@
     "embla-carousel-autoplay": "^8.2.1",
     "embla-carousel-react": "^8.2.1",
     "lucide-react": "^0.439.0",
+    "rc-slider": "^11.1.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",

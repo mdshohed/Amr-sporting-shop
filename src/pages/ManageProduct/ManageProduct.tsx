@@ -61,23 +61,25 @@ const ManageProduct = () => {
     const response = await addProduct(productDetails).unwrap();
     if(response.statusCode===2000 &&response.success){
       toast.success(response?.message)
+      setProductDetails({
+        name: "",
+        description: "",
+        category: "Footwear",
+        brand: "",
+        stockQuantity: 0,
+        rating: 0,
+        productDescription: "",
+        price: 0,
+        image:
+          "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      });
     }
-    
-    setProductDetails({
-      name: "",
-      description: "",
-      category: "Footwear",
-      brand: "",
-      stockQuantity: 0,
-      rating: 0,
-      productDescription: "",
-      price: 0,
-      image:
-        "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-    });
+    else{
+      toast.error('Product Added Error')
+    }
   };
 
-  const handleUpdateProduct = (e: any) => {
+  const handleUpdateProduct = async (e: any) => {
     e.preventDefault();
     const updatedData = {};
     for (const key in selectedProduct) {
@@ -86,7 +88,12 @@ const ManageProduct = () => {
     }
     // console.log("array", updatedData);
     setShowModal(false);
-    updateProduct({ id: selectedProduct?._id, updatedProduct: updatedData });
+    const res = await updateProduct({ id: selectedProduct?._id, updatedProduct: updatedData }).unwrap();
+    if(res.statusCode===200 && res.success) {
+      toast.success(`${res.message}`)
+    }
+    else toast.error('Product Update Error!')
+    
   };
 
   const handleDeleteProduct = (id: string) => {

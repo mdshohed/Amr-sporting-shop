@@ -1,14 +1,9 @@
-import { clearCart } from "@/redux/features/card/cardSlice";
-import { useEffect } from "react";
+
+
 import { Link } from "react-router-dom";
-import { toast } from "sonner";
+
 
 const OrderSuccess = () => {
-  useEffect(()=>{
-    clearCart();
-    toast.success("Order Successful"); 
-  },[])
-  
 
   return (
     <section className="py-24 relative">
@@ -17,7 +12,7 @@ const OrderSuccess = () => {
           Order Successful
         </h2>
         <p className="mt-4 font-normal text-lg leading-8 text-gray-500 mb-4 text-center">
-          Thanks for making a purchase you can check our order summary from below
+          Thanks for making a purchase.
         </p>
         <Link className="flex justify-center mb-4" to='/'>
           <button className="rounded-full py-2 px-4 font-semibold text-sm leading-7 text-white bg-indigo-600 max-lg:mt-5 shadow-sm shadow-transparent transition-all duration-500 hover:bg-indigo-700 hover:shadow-indigo-400">
@@ -25,7 +20,7 @@ const OrderSuccess = () => {
           </button>
         </Link>
         
-        <div className="main-box border border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
+        {/* <div className="main-box border border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
             <div className="data">
               <p className="font-semibold text-base leading-7 text-black">
@@ -171,7 +166,7 @@ const OrderSuccess = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

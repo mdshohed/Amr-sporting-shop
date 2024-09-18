@@ -20,14 +20,14 @@ const ProductCard = ({ item }: { item: TProduct }) => {
     <div>
       <Card className=" text-white border border-gray-200 rounded-none p-3 ">
         {/* <Link to={`/all-sporting-goods`}> */}
-        <CardHeader className="max-h-[300px]">
+        <CardHeader className="h-[250px]  mx-auto flex justify-center items-center">
           <img
             src={item.image ? item.image : cardImg}
             className=" overflow-hidden rounded-t-lg transition-transform duration-300 hover:scale-105"
             alt="image"
           />
         </CardHeader>
-        <CardContent className="grid text-gray-700 h-[250px]">
+        <CardContent className="grid text-gray-700 lg:h-[350px] h-[350px]">
           <div className="flex items-center gap-2">
             <Star color="orange" fill="orange" className="w-[18px]" />
             <p className="text-[18px] font-bold ">{item?.rating}</p>
@@ -36,6 +36,9 @@ const ProductCard = ({ item }: { item: TProduct }) => {
           <CardTitle className="mt-1 text-2xl font-normal">
             {item?.name}
           </CardTitle>
+          <p className="text-md mt-2 font-medium">
+            {item?.category} / {item?.brand}
+          </p>
           <p className="text-3xl mt-2 font-medium">
             <span className="font-light">$</span>
             {item?.price}
@@ -66,15 +69,6 @@ const ProductCard = ({ item }: { item: TProduct }) => {
           <RatingModal movie={movie} />
         </CardFooter> */}
       </Card>
-      {/* name, 
-      category, 
-      stock-quantity, 
-      brand, 
-      rating, 
-      description, 
-      price, 
-      image, 
-      view-details */}
     </div>
   );
 };

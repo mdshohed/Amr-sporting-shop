@@ -44,7 +44,7 @@ export function HeroSection() {
         <CarouselContent className="flex">
           {sliderData.map((slider) => (
             <CarouselItem key={slider.id} className="min-w-full">
-              <Card className="bg-transparent border-none flex justify-center items-center">
+              <Card className="bg-transparent border-none flex justify-center items-center max-w-7xl px-4 mx-auto container ">
                 <div>
                   <h1 className="text-5xl lg:me-5 sm:me-2 md:me-2 text-red-400 font-bold">25% OFF</h1>
                 </div>

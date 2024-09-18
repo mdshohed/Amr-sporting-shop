@@ -24,7 +24,7 @@ const Checkout = () => {
   const [paymentType, setPaymentType] = useState("cash");
   
   const navigate = useNavigate(); 
-  const handlePlaceOrder = () =>{
+  const handlePlaceOrder = async () =>{
     if(paymentType=='cash') {
       
       for( const key in deliveryDetails){
@@ -48,17 +48,18 @@ const Checkout = () => {
         deliveryAddress: deliveryDetails.deliveryAddress,
         orderProducts: orderProduct,
       }
-      addOrderInfo(orderData);
-      dispatch(clearCart())
+      const res = await addOrderInfo(orderData).unwrap();
       
-      if(isSuccess){
+      console.log("res", res);
+      
+      if(res.statusCode===200&&res.success){
+        dispatch(clearCart())
         navigate('/success');
       }
-      // console.log("data", data,isLoading, isError );
       
-      // if(isError){
-      //   toast.error(`${data}`);
-      // }
+      if(isError){
+        toast.error(`${res.message}`);
+      }
     }
     else{
       navigate('/payment/card');
