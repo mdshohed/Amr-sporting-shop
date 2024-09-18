@@ -5,7 +5,7 @@ import {
   // useGetSingleProductQuery,
   useUpdateProductMutation,
 } from "@/redux/features/products/productApi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Dialog,
@@ -43,12 +43,13 @@ const ManageProduct = () => {
   const [deleteProduct] = useDeleteProductMutation();
 
   const handleShowModal = (mode: string = "add", data?: any) => {
-    setShowModal(true);
+  setShowModal(true);
     setModalMode(mode);
     if (mode == "edit") {
       setSelectedProduct(data);
     }
   };
+
 
   const handleAddProduct = async (e: any) => {
     e.preventDefault();
@@ -60,7 +61,7 @@ const ManageProduct = () => {
     }
     setShowModal(false);
     const response = await addProduct(productDetails).unwrap();
-    if (response.statusCode === 2000 && response.success) {
+    if (response.statusCode === 200 && response.success) {
       toast.success(response?.message);
       setProductDetails({
         name: "",
@@ -459,10 +460,7 @@ const ManageProduct = () => {
           </div>
         </section>
 
-        {/* <!-- Create block --> */}
-
-        {/* <!-- drawer component --> */}
-
+        {/* add Product */}
         {modalMode == "add" ? (
           <DialogContent>
             <DialogHeader>
@@ -692,14 +690,14 @@ const ManageProduct = () => {
                       </div>
                     </div>
                     <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                      {/* <DialogClose asChild> */}
+                      <DialogClose asChild>
                       <button
                         type="submit"
                         className="w-full sm:w-auto justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                       >
                         Add product
                       </button>
-                      {/* </DialogClose> */}
+                      </DialogClose>
                     </div>
                   </form>
                 </div>
@@ -715,237 +713,237 @@ const ManageProduct = () => {
               <DialogDescription>
                 <div className="h-[550px] overflow-y-auto">
                   {/* <form onClick={handleUpdateProduct}> */}
-                  <div className="grid gap-4 mb-4 sm:grid-cols-2">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Product Name
-                      </label>
-                      <input
-                        onChange={(e) =>
-                          setSelectedProduct({
-                            ...selectedProduct,
-                            name: e.target.value,
-                          })
-                        }
-                        value={selectedProduct?.name}
-                        type="text"
-                        name="name"
-                        id="name"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Type product name"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="stock"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Stock
-                      </label>
-                      <input
-                        onChange={(e) =>
-                          setSelectedProduct({
-                            ...selectedProduct,
-                            stockQuantity: parseInt(e.target.value),
-                          })
-                        }
-                        value={selectedProduct?.stockQuantity}
-                        type="text"
-                        name="stock"
-                        id="stock"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Product Stock"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="description"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Description
-                      </label>
-                      <input
-                        onChange={(e) =>
-                          setSelectedProduct({
-                            ...selectedProduct,
-                            description: e.target.value,
-                          })
-                        }
-                        value={selectedProduct?.description}
-                        type="text"
-                        name="description"
-                        id="description"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Product Description"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="category"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Category
-                      </label>
-                      <input
-                        onChange={(e) =>
-                          setSelectedProduct({
-                            ...selectedProduct,
-                            category: e.target.value,
-                          })
-                        }
-                        value={selectedProduct?.category}
-                        type="text"
-                        name="category"
-                        id="category"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Product Category"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="brand"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Brand
-                      </label>
-                      <input
-                        onChange={(e) =>
-                          setSelectedProduct({
-                            ...selectedProduct,
-                            brand: e.target.value,
-                          })
-                        }
-                        value={selectedProduct?.brand}
-                        type="text"
-                        name="brand"
-                        id="brand"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Product brand"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="price"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Price
-                      </label>
-                      <input
-                        onChange={(e) =>
-                          setSelectedProduct({
-                            ...selectedProduct,
-                            price: parseInt(e.target.value),
-                          })
-                        }
-                        value={selectedProduct?.price}
-                        type="number"
-                        name="price"
-                        id="price"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="$2999"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="Rating"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Rating
-                      </label>
-                      <input
-                        onChange={(e) =>
-                          setSelectedProduct({
-                            ...selectedProduct,
-                            rating: parseInt(e.target.value),
-                          })
-                        }
-                        value={selectedProduct?.rating}
-                        type="number"
-                        name="Rating"
-                        id="Rating"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Product Rating"
-                      />
-                    </div>
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="productDescription"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        productDescription
-                      </label>
-                      <textarea
-                        onChange={(e) =>
-                          setSelectedProduct({
-                            ...selectedProduct,
-                            productDescription: e.target.value,
-                          })
-                        }
-                        value={selectedProduct?.productDescription}
-                        id="productDescription"
-                        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Write product productDescription here"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <span className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                      Product Images
-                    </span>
-                    <div className="flex justify-center items-center w-full">
-                      <label
-                        htmlFor="dropzone-file"
-                        className="flex flex-col justify-center items-center w-full h-54 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                      >
-                        <div className="flex flex-col justify-center items-center pt-5 pb-6">
-                          <svg
-                            aria-hidden="true"
-                            className="mb-3 w-10 h-10 text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                            />
-                          </svg>
-                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                            <span className="font-semibold">
-                              Click to upload
-                            </span>
-                            or drag and drop
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">
-                            SVG, PNG, JPG or GIF (MAX. 800x400px)
-                          </p>
-                        </div>
+                    <div className="grid gap-4 mb-4 sm:grid-cols-2">
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Product Name
+                        </label>
                         <input
-                          id="dropzone-file"
-                          type="file"
-                          className="hidden"
+                          onChange={(e) =>
+                            setSelectedProduct({
+                              ...selectedProduct,
+                              name: e.target.value,
+                            })
+                          }
+                          value={selectedProduct?.name}
+                          type="text"
+                          name="name"
+                          id="name"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="Type product name"
                         />
-                      </label>
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="stock"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Stock
+                        </label>
+                        <input
+                          onChange={(e) =>
+                            setSelectedProduct({
+                              ...selectedProduct,
+                              stockQuantity: parseInt(e.target.value),
+                            })
+                          }
+                          value={selectedProduct?.stockQuantity}
+                          type="text"
+                          name="stock"
+                          id="stock"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="Product Stock"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="description"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Description
+                        </label>
+                        <input
+                          onChange={(e) =>
+                            setSelectedProduct({
+                              ...selectedProduct,
+                              description: e.target.value,
+                            })
+                          }
+                          value={selectedProduct?.description}
+                          type="text"
+                          name="description"
+                          id="description"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="Product Description"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="category"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Category
+                        </label>
+                        <input
+                          onChange={(e) =>
+                            setSelectedProduct({
+                              ...selectedProduct,
+                              category: e.target.value,
+                            })
+                          }
+                          value={selectedProduct?.category}
+                          type="text"
+                          name="category"
+                          id="category"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="Product Category"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="brand"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Brand
+                        </label>
+                        <input
+                          onChange={(e) =>
+                            setSelectedProduct({
+                              ...selectedProduct,
+                              brand: e.target.value,
+                            })
+                          }
+                          value={selectedProduct?.brand}
+                          type="text"
+                          name="brand"
+                          id="brand"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="Product brand"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="price"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Price
+                        </label>
+                        <input
+                          onChange={(e) =>
+                            setSelectedProduct({
+                              ...selectedProduct,
+                              price: parseInt(e.target.value),
+                            })
+                          }
+                          value={selectedProduct?.price}
+                          type="number"
+                          name="price"
+                          id="price"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="$2999"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="Rating"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Rating
+                        </label>
+                        <input
+                          onChange={(e) =>
+                            setSelectedProduct({
+                              ...selectedProduct,
+                              rating: parseInt(e.target.value),
+                            })
+                          }
+                          value={selectedProduct?.rating}
+                          type="number"
+                          name="Rating"
+                          id="Rating"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="Product Rating"
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label
+                          htmlFor="productDescription"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          productDescription
+                        </label>
+                        <textarea
+                          onChange={(e) =>
+                            setSelectedProduct({
+                              ...selectedProduct,
+                              productDescription: e.target.value,
+                            })
+                          }
+                          value={selectedProduct?.productDescription}
+                          id="productDescription"
+                          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="Write product productDescription here"
+                        ></textarea>
+                      </div>
                     </div>
-                  </div>
-                  <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                    <DialogClose asChild>
-                      <button
-                        // type="submit"
-                        onClick={handleUpdateProduct}
-                        className="w-full sm:w-auto justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                      >
-                        Update product
-                      </button>
-                    </DialogClose>
-                  </div>
+                    <div className="mb-4">
+                      <span className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Product Images
+                      </span>
+                      <div className="flex justify-center items-center w-full">
+                        <label
+                          htmlFor="dropzone-file"
+                          className="flex flex-col justify-center items-center w-full h-54 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                        >
+                          <div className="flex flex-col justify-center items-center pt-5 pb-6">
+                            <svg
+                              aria-hidden="true"
+                              className="mb-3 w-10 h-10 text-gray-400"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                              />
+                            </svg>
+                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                              <span className="font-semibold">
+                                Click to upload
+                              </span>
+                              or drag and drop
+                            </p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                              SVG, PNG, JPG or GIF (MAX. 800x400px)
+                            </p>
+                          </div>
+                          <input
+                            id="dropzone-file"
+                            type="file"
+                            className="hidden"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                    <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+                      <DialogClose asChild>
+                        <button
+                          type="button" 
+                          onClick={handleUpdateProduct}
+                          className="w-full sm:w-auto justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                        >
+                          Update product
+                        </button>
+                      </DialogClose>
+                    </div>
                   {/* </form> */}
                 </div>
               </DialogDescription>

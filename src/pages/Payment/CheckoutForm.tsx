@@ -113,9 +113,9 @@ const CheckoutForm = () => {
         const res = await addOrderInfo(orderData).unwrap();
               
         if(res.statusCode===200&&res.success){
-          setTimeout(()=>{},1000);
+          setTimeout(()=>{},5000);
           dispatch(clearCart())
-          navigate('/success');
+          navigate('/success', { state: { transactionId: paymentIntent.id } });
         }
         
         if(isError){

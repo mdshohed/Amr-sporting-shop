@@ -8,65 +8,66 @@ import { toast } from "sonner";
 
 const paymentGatewayPK = import.meta.env.PAYMENT_GATEWAY_PK;
 
-
 const Checkout = () => {
-
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.cart.products);
-  const [addOrderInfo,  {data, isLoading, isError, isSuccess}] = useAddOrderInfoMutation()
+  const [addOrderInfo, { data, isLoading, isError, isSuccess }] =
+    useAddOrderInfoMutation();
 
-  const {tax, taxRate, grandTotal, totalPrice, selectedItems}= useAppSelector((store)=>store.cart)
+  const { tax, taxRate, grandTotal, totalPrice, selectedItems } =
+    useAppSelector((store) => store.cart);
   const [deliveryDetails, setDeliveryDetails] = useState({
-    name: '', email: '', phoneNumber: '', deliveryAddress: ''
-
-  })
+    name: "",
+    email: "",
+    phoneNumber: "",
+    deliveryAddress: "",
+  });
   const [paymentType, setPaymentType] = useState("cash");
-  
-  const navigate = useNavigate(); 
-  const handlePlaceOrder = async () =>{
-    for( const key in deliveryDetails){
-      if(deliveryDetails[key]===''){
+
+  const navigate = useNavigate();
+  const handlePlaceOrder = async () => {
+    for (const key in deliveryDetails) {
+      if (deliveryDetails[key] === "") {
         return toast.warning(`${key} field is empty`);
       }
     }
-    if(paymentType=='cash') {
-      const orderProduct = products.map( (item: any)=> ({
+    if (paymentType == "cash") {
+      const orderProduct = products.map((item: any) => ({
         productId: item?._id,
         name: item?.name,
         category: item?.category,
         brand: item?.brand,
         orderQuantity: item?.quantity,
         unitPrice: item?.price,
-        tax: tax, 
-      }))
+        tax: tax,
+      }));
       const orderData = {
-        name: deliveryDetails.name, 
-        email: deliveryDetails.email, 
+        name: deliveryDetails.name,
+        email: deliveryDetails.email,
         phoneNumber: deliveryDetails.phoneNumber,
         deliveryAddress: deliveryDetails.deliveryAddress,
         orderProducts: orderProduct,
-      }
+      };
       const res = await addOrderInfo(orderData).unwrap();
-            
-      if(res.statusCode===200&&res.success){
-        dispatch(clearCart())
-        navigate('/success');
+
+      if (res.statusCode === 200 && res.success) {
+        dispatch(clearCart());
+        navigate("/success");
       }
-      
-      if(isError){
+
+      if (isError) {
         toast.error(`${res.message}`);
       }
+    } else {
+      // const payload = {, quantity};
+      dispatch(addToCheckoutForm(deliveryDetails));
+      navigate("/payment/card");
     }
-    else{
-      // const payload = {, quantity}; 
-      dispatch(addToCheckoutForm(deliveryDetails))
-      navigate('/payment/card');
-    }
-  }
+  };
 
   return (
     <div className="mx-auto container max-w-7xl px-4">
-      <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row ">
+      <div className="flex flex-col items-center  bg-white my-4 sm:flex-row ">
         <div className="mt-4 py-2 text-xs  sm:mt-0 mx-auto  sm:text-base">
           <div className="relative">
             <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
@@ -127,7 +128,6 @@ const Checkout = () => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   d="M9 5l7 7-7 7"
-
                 />
               </svg>
               <li className="flex items-center space-x-3 text-left sm:space-x-4">
@@ -144,94 +144,128 @@ const Checkout = () => {
         </div>
       </div>
 
-
       <div className="grid lg:grid-cols-2 ">
-        <div className="pt-8">
+        <div className="pt-8 lg:mx-4">
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-400">
             Check your items. And select a suitable shipping method.
           </p>
-          <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-            {
-              products && products.map((product: any )=>(
-              <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-                <img
-                  className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                  src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                />
-                <div className="flex w-full flex-col px-4 py-4">
-                  <span className="font-semibold">
-                    {product?.name}
-                  </span>
-                  <span className="float-right text-gray-400">Unit Price: { (product?.price).toFixed(2) }</span>
-                  <p className="text-md font-semibold">{`$${product?.price} x ${product?.quantity}  = $${(product?.quantity*product?.price).toFixed(3)}` }</p>
+          <div>
+            {products && products.length ? (
+              <div className="mt-8 space-y-3 rounded-lg border bg-white  py-4 sm:px-6">
+                {products &&
+                  products.map((product: any) => (
+                    <div className="flex flex-col rounded-lg bg-white sm:flex-row">
+                      <img
+                        className="m-2 h-24 w-28 rounded-md border object-cover object-center"
+                        src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        alt=""
+                      />
+                      <div className="flex w-full flex-col px-4 py-4">
+                        <span className="font-semibold">{product?.name}</span>
+                        <span className="float-right text-gray-400">
+                          Unit Price: {(product?.price).toFixed(2)}
+                        </span>
+                        <p className="text-md font-semibold">{`$${
+                          product?.price
+                        } x ${product?.quantity}  = $${(
+                          product?.quantity * product?.price
+                        ).toFixed(3)}`}</p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            ) : (
+              <div>
+                <div className="max-w-4xl mx-auto px-10 py-4 bg-white rounded-lg shadow-lg">
+                  <div className="flex flex-col items-center justify-center py-12">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      className="h-24 w-24 text-gray-400 mb-4"
+                    >
+                      <path d="M4.00488 16V4H2.00488V2H5.00488C5.55717 2 6.00488 2.44772 6.00488 3V15H18.4433L20.4433 7H8.00488V5H21.7241C22.2764 5 22.7241 5.44772 22.7241 6C22.7241 6.08176 22.7141 6.16322 22.6942 6.24254L20.1942 16.2425C20.083 16.6877 19.683 17 19.2241 17H5.00488C4.4526 17 4.00488 16.5523 4.00488 16ZM6.00488 23C4.90031 23 4.00488 22.1046 4.00488 21C4.00488 19.8954 4.90031 19 6.00488 19C7.10945 19 8.00488 19.8954 8.00488 21C8.00488 22.1046 7.10945 23 6.00488 23ZM18.0049 23C16.9003 23 16.0049 22.1046 16.0049 21C16.0049 19.8954 16.9003 19 18.0049 19C19.1095 19 20.0049 19.8954 20.0049 21C20.0049 22.1046 19.1095 23 18.0049 23Z"></path>
+                    </svg>
+                    <p className="text-gray-600 text-lg font-semibold mb-4">
+                      Your shopping cart is empty.
+                    </p>
+                    <button
+                      onClick={() => navigate("/all-sporting-goods")}
+                      className="px-6 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition-colors duration-300"
+                    >
+                      Let's go shopping!
+                    </button>
+                  </div>
                 </div>
               </div>
-              ))
-            }
+            )}
           </div>
 
           <p className="mt-8 text-lg font-medium">Payment Methods</p>
           <form className="mt-5 grid gap-6">
-            <div onClick={() => setPaymentType('cash')} className="relative">
+            <div onClick={() => setPaymentType("cash")} className="relative">
               <input
                 className="peer hidden"
                 id="radio_1"
                 type="radio"
                 name="radio"
-                checked={paymentType === 'cash'}
-                onChange={() => setPaymentType('cash')}
+                checked={paymentType === "cash"}
+                onChange={() => setPaymentType("cash")}
               />
               <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
               <label
                 className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
                 htmlFor="radio_1"
               >
-                
                 <div className="ml-5">
                   <span className="mt-2 font-semibold">Cash on Delivery</span>
-                  <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+                  <p className="text-slate-500 text-sm leading-6">
+                    Delivery: 2-4 Days
+                  </p>
                 </div>
               </label>
             </div>
-  
-            <div onClick={() => setPaymentType('card')} className="relative">
+
+            <div onClick={() => setPaymentType("card")} className="relative">
               <input
                 className="peer hidden"
                 id="radio_2"
                 type="radio"
                 name="radio"
-                checked={paymentType === 'card'}
-                onChange={() => setPaymentType('card')}
+                checked={paymentType === "card"}
+                onChange={() => setPaymentType("card")}
               />
               <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
               <label
                 className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
                 htmlFor="radio_2"
               >
-                
                 <div className="ml-5">
                   <span className="mt-2 font-semibold">Stripe (optional)</span>
-                  <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+                  <p className="text-slate-500 text-sm leading-6">
+                    Delivery: 2-4 Days
+                  </p>
                 </div>
               </label>
             </div>
           </form>
-
         </div>
 
         {/* Payment Details */}
         <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
           <p className="text-xl font-medium">Delivery Details</p>
-          <p className="text-gray-400">
-            Complete your order by providing your Delivery details.
-          </p>
           <div className="">
-            <label className="mt-4 mb-2 block text-sm font-medium">Full Name</label>
+            <label className="mt-4 mb-2 block text-sm font-medium">
+              Full Name
+            </label>
             <div className="relative">
               <input
-                onChange={(e)=>setDeliveryDetails({...deliveryDetails, name: e.target.value})}
+                onChange={(e) =>
+                  setDeliveryDetails({
+                    ...deliveryDetails,
+                    name: e.target.value,
+                  })
+                }
                 type="text"
                 id="card-holder"
                 name="card-holder"
@@ -243,20 +277,30 @@ const Checkout = () => {
             <label className="mt-4 mb-2 block text-sm font-medium">Email</label>
             <div className="relative">
               <input
-                onChange={(e)=>setDeliveryDetails({...deliveryDetails, email: e.target.value})}
+                onChange={(e) =>
+                  setDeliveryDetails({
+                    ...deliveryDetails,
+                    email: e.target.value,
+                  })
+                }
                 type="text"
                 name="email"
                 className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="your.email@gmail.com"
               />
             </div>
-            
+
             <label className="mt-4 mb-2 block text-sm font-medium">
               Phone Number
             </label>
             <div className="relative">
               <input
-                onChange={(e)=>setDeliveryDetails({...deliveryDetails, phoneNumber: e.target.value})}
+                onChange={(e) =>
+                  setDeliveryDetails({
+                    ...deliveryDetails,
+                    phoneNumber: e.target.value,
+                  })
+                }
                 type="text"
                 id="number"
                 name="number"
@@ -270,7 +314,12 @@ const Checkout = () => {
             </label>
             <div className="relative">
               <input
-                onChange={(e)=>setDeliveryDetails({...deliveryDetails, deliveryAddress: e.target.value})}
+                onChange={(e) =>
+                  setDeliveryDetails({
+                    ...deliveryDetails,
+                    deliveryAddress: e.target.value,
+                  })
+                }
                 type="text"
                 id="address"
                 name="address"
@@ -282,7 +331,9 @@ const Checkout = () => {
             <div className="mt-6 border-t border-b py-2">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Subtotal</p>
-                <p className="font-semibold text-gray-900">${totalPrice.toFixed(3)}</p>
+                <p className="font-semibold text-gray-900">
+                  ${totalPrice.toFixed(3)}
+                </p>
               </div>
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Tax</p>
@@ -290,17 +341,23 @@ const Checkout = () => {
               </div>
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Shipping</p>
-                <p className="font-semibold text-gray-900 text-">Free Shipping</p>
+                <p className="font-semibold text-gray-900 text-">
+                  Free Shipping
+                </p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-between">
               <p className="text-sm font-medium text-gray-900">Total</p>
-              <p className="text-2xl font-semibold text-gray-900">${grandTotal.toFixed(3)}</p>
+              <p className="text-2xl font-semibold text-gray-900">
+                ${grandTotal.toFixed(3)}
+              </p>
             </div>
           </div>
-          <button 
-            disabled={!products.length} 
-            onClick={handlePlaceOrder} className="mt-4 mb-8 w-full disabled:bg-gray-600 rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+          <button
+            disabled={!products.length}
+            onClick={handlePlaceOrder}
+            className="mt-4 mb-8 w-full disabled:bg-gray-600 rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
+          >
             Place Order
           </button>
         </div>

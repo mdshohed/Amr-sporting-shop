@@ -60,7 +60,7 @@ export const cartSlice = createSlice({
     },
 
     addToCheckoutForm: (state: any, action) => {
-      state.checkout = {...action.payload}; 
+      state.checkoutForm = {...action.payload}; 
     },
 
     deleteFromCard: (state, action) => {   

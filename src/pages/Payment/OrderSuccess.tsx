@@ -1,9 +1,11 @@
 
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 const OrderSuccess = () => {
+  // const location = useLocation();
+  // const { transactionId } = location.state;
 
   return (
     <section className="py-24 relative">
@@ -13,6 +15,9 @@ const OrderSuccess = () => {
         </h2>
         <p className="mt-4 font-normal text-lg leading-8 text-gray-500 mb-4 text-center">
           Thanks for making a purchase.
+          {/* {
+            transactionId ? `Your transactionId is: ${transactionId}` : null
+          } */}
         </p>
         <Link className="flex justify-center mb-4" to='/'>
           <button className="rounded-full py-2 px-4 font-semibold text-sm leading-7 text-white bg-indigo-600 max-lg:mt-5 shadow-sm shadow-transparent transition-all duration-500 hover:bg-indigo-700 hover:shadow-indigo-400">
