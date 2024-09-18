@@ -26,3 +26,7 @@
 - sheet
 - slider
 
+
+## image upload
+- imgbb 
+- cludynary in frontend

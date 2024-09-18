@@ -30,7 +30,7 @@ const Products = () => {
   const [selectedBrand, setSelectedBrand] = useState([])
 
   const [products, setProducts] = useState<TProduct[]>([]);
-  const { data, error } = useGetAllProductsQuery(undefined);
+  const { data, error } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
 
   useEffect(() => {
     window.scrollTo({

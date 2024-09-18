@@ -1,21 +1,30 @@
 import { clearCart } from "@/redux/features/card/cardSlice";
+import { useAddOrderInfoMutation } from "@/redux/features/products/productApi";
 import { useAddPaymentMutation } from "@/redux/features/stripe/stripeApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const CheckoutForm = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate(); 
   const [details, setDetails] = useState({name:'', email: ''})
   const [transactionId, setTransactionId] = useState("");
   const [error, setError] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  // const axiosSecure = useAxio
+  const products = useAppSelector((store) => store.cart.products);
+  const checkoutForm = useAppSelector((store) => store.cart.checkoutForm);
+
+  console.log("card", checkoutForm);
+  
+
   const [clientSecret, setClientSecret] = useState("");
-  const { grandTotal } = useAppSelector((store) => store.cart);
-  const [addPayment, { data, isLoading, isError, isSuccess }] =
-    useAddPaymentMutation();
+  const { tax, grandTotal } = useAppSelector((store) => store.cart);
+  const [addPayment, { data, isLoading, isError, isSuccess }] = useAddPaymentMutation();
+  const [addOrderInfo] = useAddOrderInfoMutation()
 
   useEffect(() => {
     const initiatePayment = async () => {
@@ -30,11 +39,6 @@ const CheckoutForm = () => {
     initiatePayment();
   }, [addPayment, grandTotal]);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     console.log("clientSecret:", data);  // Ensure clientSecret is available when data is ready
-  //   }
-  // }, [data]);
 
   const handleSubmit = async (event: any) => {
     // Block native form submission.
@@ -48,14 +52,9 @@ const CheckoutForm = () => {
       }
     }
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
 
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
     const card = elements.getElement(CardElement);
 
     if (card == null) {
@@ -94,8 +93,35 @@ const CheckoutForm = () => {
         console.log(`transaction id: ${paymentIntent.id}`);
         setTransactionId(paymentIntent.id);
 
-        // reset card
-        dispatch(clearCart())
+
+        const orderProduct = products.map( (item: any)=> ({
+          productId: item?._id,
+          name: item?.name,
+          category: item?.category,
+          brand: item?.brand,
+          orderQuantity: item?.quantity,
+          unitPrice: item?.price,
+          tax: tax, 
+        }))
+        const orderData = {
+          name: checkoutForm.name, 
+          email: checkoutForm.email, 
+          phoneNumber: checkoutForm.phoneNumber,
+          deliveryAddress: checkoutForm.deliveryAddress,
+          orderProducts: orderProduct,
+        }
+        const res = await addOrderInfo(orderData).unwrap();
+              
+        if(res.statusCode===200&&res.success){
+          setTimeout(()=>{},1000);
+          dispatch(clearCart())
+          navigate('/success');
+        }
+        
+        if(isError){
+          toast.error(`${res.message}`);
+        }
+
       }
     }
   };

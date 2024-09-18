@@ -1,76 +1,95 @@
-"use client"
-
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-
-import { toast } from "sonner"
-import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-
-const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Give Valid Email",
-  }),
-})
 
 export function ContactUs() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      username: "",
-    },
-  })
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    // toast({
-    //   title: "You submitted the following values:",
-    //   description: (
-    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-    //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-    //     </pre>
-    //   ),
-    // })
-    // toast('You submitted the following values', {time:"200"})
-  }
-
   return (
-    <div className="flex justify-center my-[100px]">
-       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-5xl font-semibold justify-center flex">Be The First To Know</FormLabel>
-                <FormDescription className="text-lg justify-center flex">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, quae!
-                </FormDescription>
-                <div className="flex md:flex-row justify-center py-3">
-                  <FormControl className="md:me-3">
-                    <Input className="max-w-96 " placeholder="Email Address" {...field} />
-                  </FormControl>
-                  <FormMessage/>
-                  <Button type="submit" >Submit</Button>
+    // <div className="flex justify-center my-[100px]">
+    //    <Form {...form}>
+    //     <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+    //       <FormField
+    //         control={form.control}
+    //         name="username"
+    //         render={({ field }) => (
+    //           <FormItem>
+    //             <FormLabel className="text-5xl font-semibold justify-center flex">Be The First To Know</FormLabel>
+    //             <FormDescription className="text-lg justify-center flex">
+    //               Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, quae!
+    //             </FormDescription>
+    //             <div className="flex md:flex-row justify-center py-3">
+    //               <FormControl className="md:me-3">
+    //                 <Input className="max-w-96 " placeholder="Email Address" {...field} />
+    //               </FormControl>
+    //               <FormMessage/>
+    //               <Button type="submit" >Submit</Button>
 
-                </div>
-                
-              </FormItem>
-            )}
-          />
+    //             </div>
+
+    //           </FormItem>
+    //         )}
+    //       />
+    //     </form>
+    //   </Form>
+    // </div>
+    <section className="bg-white dark:bg-gray-900">
+      <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+        <h1 className="text-5xl font-semibold justify-center flex">
+          Be The First To Know
+        </h1>
+        <p className="mt-8 lg:mb-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+          Got a technical issue? Want to send feedback about a beta feature?
+          Need details about our Business plan? Let us know.
+        </p>
+        <form action="#" className="space-y-8">
+          <div>
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Your email
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+              placeholder="name@flowbite.com"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="subject"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Subject
+            </label>
+            <input
+              type="text"
+              id="subject"
+              className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+              placeholder="Let us know how we can help you"
+              required
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <label
+              htmlFor="message"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+            >
+              Your message
+            </label>
+            <textarea
+              id="message"
+              rows={6}
+              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Leave a comment..."
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800"
+          >
+            Send message
+          </button>
         </form>
-      </Form>
-    </div>
-   
-  )
+      </div>
+    </section>
+  );
 }

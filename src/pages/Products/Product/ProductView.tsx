@@ -1,10 +1,10 @@
 import { useGetSingleProductQuery } from '@/redux/features/products/productApi';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addToCart } from '@/redux/features/card/cardSlice';
 import { toast } from 'sonner';
 
@@ -13,21 +13,63 @@ const ProductView = () => {
   const { data } = useGetSingleProductQuery( id ); 
   const dispatch = useAppDispatch()
 
+  const products = useAppSelector( (store)=> store.cart.products)
+
+
   const [quantity, setQuantity] = useState(1); 
+  const [flag, setFlag] = useState(false); 
   
-  // const { name,description,category,brand,stockQuantity,rating,productDescription,price,image,isAvailable } = data?.data;   
-  
-  // const handleQuantityChange = (e: number) => setQuantity(Math.max(1, e.target.value));
+  useEffect(()=>{
+    const foundProduct = products.find((product: any) => product._id === data?.data?._id);
+    const cardQuantity = foundProduct ? foundProduct.quantity : 0; 
+    const stockQty = data?.data?.stockQuantity; 
+    if( stockQty <= cardQuantity ){
+      setFlag(true);
+    }
+  },[data?.data, products]) 
+
+  const handleQuantityChangePlus = ( value: number) => {
+    const foundProduct = products.find((product: any) => product._id === data?.data?._id);
+    const cardQuantity = foundProduct ? foundProduct.quantity : 0; 
+
+    const stockQty = data?.data?.stockQuantity; 
+    console.log("current", data?.data, cardQuantity, cardQuantity+ value );
+    setQuantity(value)
+    if( stockQty >= ( cardQuantity + value )){
+      setFlag(false);
+    }
+    else{
+      setFlag(true);
+      toast.error('Stock Quantity limit Out'); 
+    }
+  }
+
+  const handleQuantityChangeMinus = (value:number) => {
+    const foundProduct = products.find((product: any) => product._id === data?.data?._id);
+    const cardQuantity = foundProduct ? foundProduct.quantity : 0; 
+    const stockQty = data?.data?.stockQuantity;
+    setQuantity(value)
+    if( stockQty >= ( cardQuantity + value )){
+      setFlag(false);
+      
+    }
+  }
+
+
 
   const handleAddToCart = (product: any) =>{
     const payload = {product, quantity}; 
+    // const foundProduct = products.find((product: any) => product._id === data?.data?._id);
+    // const cardQuantity = foundProduct ? foundProduct.quantity : 0; 
+    // const stockQty = data?.data?.stockQuantity;
+    // if( stockQty<cardQuantity){
+
+    // }
     dispatch(addToCart(payload))
     toast.success('Added to Card Successfully'); 
     setQuantity(1);
   }
 
-  console.log("data", data);
-  
 
   return (
     <section className="py-10 lg:py-24 relative">
@@ -156,7 +198,7 @@ const ProductView = () => {
               <div className="flex items-center justify-center w-full">
                 <button
                   className="group py-4 px-6 border border-gray-400 rounded-l-full shadow-sm transition-all duration-500 hover:shadow-gray-300 hover:bg-gray-50"
-                  onClick={() => setQuantity( Math.max(1, quantity - 1))}
+                  onClick={() => handleQuantityChangeMinus( Math.max(1, quantity - 1))}
                 >
                   <svg
                     className="stroke-gray-700 transition-all duration-500 group-hover:stroke-black"
@@ -177,7 +219,7 @@ const ProductView = () => {
                 />
                 <button
                   className="group py-4 px-6 border border-gray-400 rounded-r-full shadow-sm transition-all duration-500 hover:shadow-gray-300 hover:bg-gray-50"
-                  onClick={() => setQuantity( quantity + 1)}
+                  onClick={() => handleQuantityChangePlus( quantity + 1)}
                 >
                   <svg
                     className="stroke-gray-700 transition-all duration-500 group-hover:stroke-black"
@@ -194,11 +236,12 @@ const ProductView = () => {
               </div>
 
               <button 
+                disabled={flag}
                 onClick={(e) => {
                   e.stopPropagation();
                   handleAddToCart(data?.data)
                 }}
-                className="w-full bg-indigo-600 text-white py-4 rounded-full font-semibold shadow-lg transition-all duration-300 hover:bg-indigo-700">
+                className="w-full disabled:bg-indigo-300 bg-indigo-600 text-white py-4 rounded-full font-semibold shadow-lg transition-all duration-300 hover:bg-indigo-700">
                 Add to Cart
               </button>
             </div>

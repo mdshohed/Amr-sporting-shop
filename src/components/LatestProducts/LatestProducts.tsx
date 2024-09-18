@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { TProduct } from "@/types/types";
+import { useGetAllProductsQuery } from "@/redux/features/products/productApi";
 
 
 
 const LatestProducts = () => {
-  const [data, setData] = useState([]);
-  useEffect(()=>{
-    fetch('http://localhost:5000/api/products')
-    .then(res=>res.json())
-    .then(res=>setData(res.data))
-    .catch(err=>console.log(err))
-    .finally()
-  },[])
+  const { data, error } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
+
+const [latestProduct, setLatestProduct] = useState<TProduct[]>([]);
+
+useEffect(() => {
+  if (data && data.data) {
+    const latest = [...data.data].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    setLatestProduct(latest);
+  }
+}, [data]);
+
 
   return (
     <div className="mx-auto container max-w-7xl px-4">
@@ -22,7 +26,7 @@ const LatestProducts = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
         {
-          data?.map( (item: TProduct, index:number)=>(
+          latestProduct?.map( (item: TProduct, index:number)=>(
             <ProductCard key={index} item={item}></ProductCard>
           ))
         }

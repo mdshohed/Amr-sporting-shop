@@ -1,4 +1,4 @@
-import { clearCart } from "@/redux/features/card/cardSlice";
+import { addToCheckoutForm, clearCart } from "@/redux/features/card/cardSlice";
 import { useAddOrderInfoMutation } from "@/redux/features/products/productApi";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -10,7 +10,6 @@ const paymentGatewayPK = import.meta.env.PAYMENT_GATEWAY_PK;
 
 
 const Checkout = () => {
-  console.log("value",paymentGatewayPK);
 
   const dispatch = useAppDispatch()
   const products = useAppSelector((store) => store.cart.products);
@@ -25,13 +24,12 @@ const Checkout = () => {
   
   const navigate = useNavigate(); 
   const handlePlaceOrder = async () =>{
-    if(paymentType=='cash') {
-      
-      for( const key in deliveryDetails){
-        if(deliveryDetails[key]===''){
-          return toast.warning(`${key} field is empty`);
-        }
+    for( const key in deliveryDetails){
+      if(deliveryDetails[key]===''){
+        return toast.warning(`${key} field is empty`);
       }
+    }
+    if(paymentType=='cash') {
       const orderProduct = products.map( (item: any)=> ({
         productId: item?._id,
         name: item?.name,
@@ -49,9 +47,7 @@ const Checkout = () => {
         orderProducts: orderProduct,
       }
       const res = await addOrderInfo(orderData).unwrap();
-      
-      console.log("res", res);
-      
+            
       if(res.statusCode===200&&res.success){
         dispatch(clearCart())
         navigate('/success');
@@ -62,6 +58,8 @@ const Checkout = () => {
       }
     }
     else{
+      // const payload = {, quantity}; 
+      dispatch(addToCheckoutForm(deliveryDetails))
       navigate('/payment/card');
     }
   }

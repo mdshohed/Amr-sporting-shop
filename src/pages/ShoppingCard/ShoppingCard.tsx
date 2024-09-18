@@ -4,6 +4,7 @@ import {
 } from "@/redux/features/card/cardSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const ShoppingCard = () => {
   const navigate = useNavigate();
@@ -19,12 +20,23 @@ const ShoppingCard = () => {
 
   const handleQuantity = (type: string, id: string) => {
     const payload = { type, id };
-    dispatch(updateQuantity(payload));
+    if(type=='increment'){
+        const foundProduct = products.find((product: any) => product._id === id);
+        const cardQuantity = foundProduct ? foundProduct.quantity : 0; 
+        const stockQty = foundProduct.stockQuantity; 
+        if( stockQty <= cardQuantity ){
+          toast.error('Stock Quantity limit Out')
+        }
+        else{
+          dispatch(updateQuantity(payload));
+        }
+    }
+    else{
+      dispatch(updateQuantity(payload));
+    }
   };
 
   const handleDeleteProduct = (id: string) => {
-    console.log(id);
-
     dispatch(deleteFromCard(id));
   };
 
