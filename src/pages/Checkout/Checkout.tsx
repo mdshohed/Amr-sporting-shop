@@ -6,15 +6,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const paymentGatewayPK = import.meta.env.PAYMENT_GATEWAY_PK;
-
 const Checkout = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.cart.products);
-  const [addOrderInfo, { data, isLoading, isError, isSuccess }] =
+  const [addOrderInfo, { data, isError, isSuccess }] =
     useAddOrderInfoMutation();
 
-  const { tax, taxRate, grandTotal, totalPrice, selectedItems } =
+  const { vat, taxRate, grandTotal, totalPrice, selectedItems } =
     useAppSelector((store) => store.cart);
   const [deliveryDetails, setDeliveryDetails] = useState({
     name: "",
@@ -39,7 +37,7 @@ const Checkout = () => {
         brand: item?.brand,
         orderQuantity: item?.quantity,
         unitPrice: item?.price,
-        tax: tax,
+        tax: vat,
       }));
       const orderData = {
         name: deliveryDetails.name,
@@ -158,7 +156,7 @@ const Checkout = () => {
                     <div className="flex flex-col rounded-lg bg-white sm:flex-row">
                       <img
                         className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                        src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        src={product?.image}
                         alt=""
                       />
                       <div className="flex w-full flex-col px-4 py-4">
@@ -336,8 +334,8 @@ const Checkout = () => {
                 </p>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-gray-900">Tax</p>
-                <p className="font-semibold text-gray-900">${tax.toFixed(3)}</p>
+                <p className="text-sm font-medium text-gray-900">Vat: 15%</p>
+                <p className="font-semibold text-gray-900">${vat.toFixed(3)}</p>
               </div>
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Shipping</p>

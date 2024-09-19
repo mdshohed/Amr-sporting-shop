@@ -6,6 +6,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/card/cardSlice";
 import { toast } from "sonner";
+import StarRating from "@/components/Rating/StarRating";
 
 const ProductView = () => {
   const { id } = useParams();
@@ -61,12 +62,7 @@ const ProductView = () => {
 
   const handleAddToCart = (product: any) => {
     const payload = { product, quantity };
-    // const foundProduct = products.find((product: any) => product._id === data?.data?._id);
-    // const cardQuantity = foundProduct ? foundProduct.quantity : 0;
-    // const stockQty = data?.data?.stockQuantity;
-    // if( stockQty<cardQuantity){
 
-    // }
     dispatch(addToCart(payload));
     toast.success("Added to Card Successfully");
     setQuantity(1);
@@ -144,7 +140,6 @@ const ProductView = () => {
                   15% off
                 </span>
               </div>
-              {/* <h6 className="font-manrope font-semibold text-2xl leading-9 text-gray-900 pr-5 sm:border-r border-gray-200 mr-5">${data?.data?.price}</h6> */}
               <svg
                 className="mx-3  max-[400px]:hidden"
                 xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +150,7 @@ const ProductView = () => {
               >
                 <path d="M1 0V36" stroke="#E5E7EB" />
               </svg>
-              <button className="flex  items-center justify-center gap-1 rounded-lg bg-amber-400 py-1.5 px-2.5 w-max">
+              {/* <button className="flex  items-center justify-center gap-1 rounded-lg bg-amber-400 py-1.5 px-2.5 w-max">
                 <svg
                   width="18"
                   height="18"
@@ -185,56 +180,30 @@ const ProductView = () => {
                   </defs>
                 </svg>
                 <span className="text-base font-medium text-white">{data?.data?.rating}</span>
-              </button>
+              </button> */}
+              <StarRating rating={data?.data?.rating}></StarRating> {data?.data?.rating}
             </div>
 
-            <p className="font-medium my-2 text-lg text-gray-600">
-              Category: <span className="">{data?.data?.category}</span>
+            <p className="font-medium my-2 border-t-2 w-48 whitespace-nowrap pt-2 text-md text-gray-600">
+              Available: <span className={`font-bold ${data?.data?.stockQuantity==0 ? 'text-red-500' : data?.data?.stockQuantity<=5 ? 'text-yellow-400' : 'text-blue-500'}`}>{data?.data?.stockQuantity==0 ? "Out of Stock" : "In Stock"}</span>
             </p>
 
-            <p className="font-medium text-lg text-gray-600 my-2">
-              Brand: <span className="">{data?.data?.brand}</span>
+            <p className="font-medium my-2 text-md text-gray-600">
+              Category: <span className="text-black font-bold">{data?.data?.category}</span>
+            </p>
+
+            <p className="font-medium text-md text-gray-600 my-2">
+              Brand: <span className="text-black font-bold">{data?.data?.brand}</span>
             </p>
 
             <p className="text-gray-500 text-lg my-2 font-medium">
-              Stock-Quantity: {data?.data?.stockQuantity} 
+              Stock-Quantity: <span className="font-bold text-black">{data?.data?.stockQuantity} </span>
             </p>
 
 
             {/* Color Options */}
             <div className="block w-full">
-              {/* <p className="font-medium text-lg leading-8 text-gray-900 mb-4">Bag Color</p>
-              <div className="flex items-center justify-start gap-3 md:gap-6 relative mb-6">
-                {colors.map((color, index) => (
-                  <button
-                    key={index}
-                    className={`p-2.5 border border-gray-200 rounded-full transition-all duration-300 ${
-                      selectedColor === color.name.toLowerCase() ? 'border-emerald-500' : 'hover:border-emerald-500'
-                    }`}
-                    onClick={() => handleColorClick(color.name.toLowerCase())}
-                  >
-                    <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="20" cy="20" r="20" fill={color.value} />
-                    </svg>
-                  </button>
-                ))}
-              </div>
-
-            
-              <p className="font-medium text-lg leading-8 text-gray-900 mb-4">Bag Size</p>
-              <div className="grid grid-cols-2 min-[400px]:grid-cols-3 gap-3">
-                {sizes.map((size, index) => (
-                  <button
-                    key={index}
-                    className={`border border-gray-200 text-gray-900 text-lg py-2 rounded-full px-1.5 sm:px-6 w-full font-semibold shadow-sm transition-all duration-300 ${
-                      selectedSize === size ? 'shadow-gray-300 bg-gray-50 border-gray-300' : 'hover:shadow-gray-300 hover:bg-gray-50 hover:border-gray-300'
-                    }`}
-                    onClick={() => handleSizeClick(size)}
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div> */}
+             
             </div>
 
             {/* Quantity and Add to Cart */}

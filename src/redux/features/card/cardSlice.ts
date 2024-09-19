@@ -11,8 +11,9 @@ const initialState = {
   products: [] as any,
   selectedItems: 0,
   totalPrice: 0,
-  tax: 0,
-  taxRate: 0.05,
+  vat: 0,
+  taxRate: 0.15,
+  vatRate: 0.15, 
   grandTotal: 0,
   checkoutForm: {} as TForm, 
 };
@@ -38,7 +39,7 @@ export const cartSlice = createSlice({
       }
       state.selectedItems = selectSelectedItems(state);
       state.totalPrice = selectTotalPrice(state);
-      state.tax = selectTax(state);
+      state.vat = selectVat(state);
       state.grandTotal = selectGrandTotal(state);
     },
 
@@ -55,7 +56,8 @@ export const cartSlice = createSlice({
       });
       state.selectedItems = selectSelectedItems(state);
       state.totalPrice = selectTotalPrice(state);
-      state.tax = selectTax(state);
+      // state.tax = selectTax(state);
+      state.vat = selectVat(state);
       state.grandTotal = selectGrandTotal(state);
     },
 
@@ -68,14 +70,14 @@ export const cartSlice = createSlice({
       // console.log("delete", value );
       state.selectedItems = selectSelectedItems(state);
       state.totalPrice = selectTotalPrice(state);
-      state.tax = selectTax(state);
+      state.vat = selectVat(state);
       state.grandTotal = selectGrandTotal(state);
     },
     clearCart: (state)=>{
       state.products=[];
       state.selectedItems=0;
       state.totalPrice=0;
-      state.tax=0;
+      state.vat=0;
       state.grandTotal=0;
       state.checkoutForm = {} as TForm; 
     }
@@ -92,11 +94,11 @@ export const selectTotalPrice = (state: any) =>
     return Number(total + product.quantity * product.price);
   }, 0);
 
-export const selectTax = (state: any) =>
-  selectTotalPrice(state) * state.taxRate;
+// export const selectTax = (state: any) => selectTotalPrice(state) * state.taxRate;
+export const selectVat = (state: any) => selectTotalPrice(state) * state.vatRate;
 
 export const selectGrandTotal = (state: any) => {
-  return selectTotalPrice(state) + selectTotalPrice(state) * state.taxRate;
+  return selectTotalPrice(state) + selectTotalPrice(state) * state.vatRate;
 };
 
 export const { addToCart, updateQuantity, clearCart, deleteFromCard, addToCheckoutForm } = cartSlice.actions;

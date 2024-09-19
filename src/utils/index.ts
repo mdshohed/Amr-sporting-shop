@@ -2,8 +2,8 @@ import axios from 'axios'
 
 // Image upload
 export const imageUpload = async (image: any) => {
-  const value = import.meta.env.VITE_IMGBB_API_KEY;
-  console.log("imgvalue", image, value);
+  // const value = import.meta.env.VITE_IMGBB_API_KEY;
+  // console.log("imgvalue", image, value);
   
   const formData = new FormData()
   formData.append('image', image)

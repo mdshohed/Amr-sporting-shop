@@ -7,10 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { RatingModal } from "../RatingModal/RatingMdal";
 import cardImg from "../../assets/images/shos-1.jpg";
 import { TProduct } from "@/types/types";
+import StarRating from '../Rating/StarRating';
 
 const ProductCard = ({ item }: { item: TProduct }) => {
   const navigate = useNavigate(); 
@@ -40,7 +41,7 @@ const ProductCard = ({ item }: { item: TProduct }) => {
         </CardHeader>
         <CardContent className="grid text-gray-700 lg:h-[280px] h-[280px]">
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-1 rounded-lg bg-yellow-500 py-1 px-2 w-max">
+            {/* <button className="flex items-center gap-1 rounded-lg bg-yellow-500 py-1 px-2 w-max">
                 <svg
                   width="14"
                   height="14"
@@ -70,7 +71,8 @@ const ProductCard = ({ item }: { item: TProduct }) => {
                   </defs>
                 </svg>
                 <span className="text-base font-medium text-white">{item?.rating}</span>
-              </button>
+              </button> */}
+            <StarRating rating={item?.rating}></StarRating> {item?.rating}
           </div>
           
           <CardTitle className="mt-1 text-2xl font-normal">

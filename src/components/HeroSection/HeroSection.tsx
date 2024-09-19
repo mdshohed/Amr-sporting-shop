@@ -1,4 +1,4 @@
-import { gsap } from 'gsap';
+
 
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -13,7 +13,6 @@ import sliderImage2 from "@/assets/images/hero2.jpg";
 import sliderImage3 from "@/assets/images/hero3.jpg";
 import sliderImage4 from "@/assets/images/hero4.jpg";
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from 'react';
 
 export function HeroSection() {
   const sliderData = [
@@ -67,18 +66,7 @@ export function HeroSection() {
         <CarouselContent className="flex">
           {sliderData.map((slider, idx) => (
             <CarouselItem key={slider.id} className="">
-              {/* <Card className="bg-transparent border-none flex justify-center items-center max-w-7xl px-4 mx-auto container ">
-                <div>
-                  <h1 className="text-5xl lg:me-5 sm:me-2 md:me-2 text-red-400 font-bold">25% OFF</h1>
-                </div>
-                <CardContent className="flex items-center justify-center h-[300px] p-0">
-                  <img
-                    src={slider?.image}
-                    className="h-full object-cover transition-transform duration-500 hover:scale-105"
-                    alt=""
-                  />
-                </CardContent>
-              </Card> */}
+
               <div className="relative h-full w-full">
                 <div className="max-h-[500px] flex justify-center items-center">
                   <img

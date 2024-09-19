@@ -1,8 +1,7 @@
-import { SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { SheetContent, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 // import { Slider } from "../ui/slider";
 import { Checkbox } from "../ui/checkbox";
-import { useState } from "react";
 
 import {
   Accordion,

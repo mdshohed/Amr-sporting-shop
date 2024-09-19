@@ -14,9 +14,10 @@ const ShoppingCard = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.cart.products);
 
-  const { tax, taxRate, grandTotal, totalPrice, selectedItems } =
-    useAppSelector((store) => store.cart);
-  console.log(taxRate, taxRate * 100);
+  const { vat, vatRate, taxRate, grandTotal, totalPrice, selectedItems } = useAppSelector((store) => store.cart);
+
+
+  console.log(vatRate, vatRate * 100);
 
   const handleQuantity = (type: string, id: string) => {
     const payload = { type, id };
@@ -228,8 +229,8 @@ const ShoppingCard = () => {
                   Shipping <span className="ml-auto font-bold">Free</span>
                 </li>
                 <li className="flex flex-wrap gap-4 text-sm">
-                  Vat: {taxRate * 100}%{" "}
-                  <span className="ml-auto font-bold">${tax.toFixed(3)}</span>
+                  Vat: {vatRate * 100}%{" "}
+                  <span className="ml-auto font-bold">${vat.toFixed(3)}</span>
                 </li>
                 <hr className="border-gray-300" />
                 <li className="flex flex-wrap gap-4 text-sm font-bold">

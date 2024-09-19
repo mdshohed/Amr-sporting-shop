@@ -35,7 +35,6 @@ const Category = () => {
     <div className="max-w-7xl px-4 mx-auto container mt-10">
       <div className="p-5 text-center ">
         <h1 
-        // ref={textRef}
         className="text-[25px] sm:text-[35px] lg:text-[45px]">Featured Category</h1>
         <p className="mt-4 lg:mb-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
           Get Your Desired Product from Featured Category!

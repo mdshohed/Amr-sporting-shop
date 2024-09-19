@@ -30,8 +30,14 @@ export function ContactUs() {
           <div className="grid md:grid-cols-2">
             <div className="h-full pr-6">
               <p className="mt-3 mb-12 text-lg text-gray-600 dark:text-slate-400">
-              Have a question or need assistance? We're here to help! Reach out to our support team via email at <span className="text-blue-600">support@amrsportinggoods.com</span> or call us at (555) 123-4567. 
-              You can also visit our store at 123 Sports Ave, City, State. Our team is available Monday - Friday: 08:00 - 17:00, Saturday & Sunday: 08:00 - 12:00
+                Have a question or need assistance? We're here to help! Reach
+                out to our support team via email at{" "}
+                <span className="text-blue-600">
+                  support@amrsportinggoods.com
+                </span>{" "}
+                or call us at (555) 123-4567. You can also visit our store at
+                123 Sports Ave, City, State. Our team is available Monday -
+                Friday: 08:00 - 17:00, Saturday & Sunday: 08:00 - 12:00
               </p>
               <ul className="mb-6 md:mb-0">
                 <li className="flex">
@@ -132,60 +138,60 @@ export function ContactUs() {
                 Ready to Get Started?
               </h2>
               {/* <form id="contactForm"> */}
-                <div className="mb-6">
+              <div className="mb-6">
+                <div className="mx-0 mb-1 sm:mb-4">
                   <div className="mx-0 mb-1 sm:mb-4">
-                    <div className="mx-0 mb-1 sm:mb-4">
-                      <label
-                        htmlFor="name"
-                        className="pb-1 text-xs uppercase tracking-wider"
-                      ></label>
-                      <input
-                        type="text"
-                        id="name"
-                        autoComplete="given-name"
-                        placeholder="Your name"
-                        className="mb-2 w-full rounded-md focus:outline-none border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
-                        name="name"
-                      />
-                    </div>
-                    <div className="mx-0 mb-1 sm:mb-4">
-                      <label
-                        htmlFor="email"
-                        className="pb-1 text-xs uppercase tracking-wider"
-                      ></label>
-                      <input
-                        type="email"
-                        id="email"
-                        autoComplete="email"
-                        placeholder="Your email address"
-                        className="mb-2 w-full rounded-md focus:outline-none border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
-                        name="email"
-                      />
-                    </div>
+                    <label
+                      htmlFor="name"
+                      className="pb-1 text-xs uppercase tracking-wider"
+                    ></label>
+                    <input
+                      type="text"
+                      id="name"
+                      autoComplete="given-name"
+                      placeholder="Your name"
+                      className="mb-2 w-full rounded-md focus:outline-none border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                      name="name"
+                    />
                   </div>
                   <div className="mx-0 mb-1 sm:mb-4">
                     <label
-                      htmlFor="textarea"
+                      htmlFor="email"
                       className="pb-1 text-xs uppercase tracking-wider"
                     ></label>
-                    <textarea
-                      id="textarea"
-                      name="textarea"
-                      cols={30}
-                      rows={5}
-                      placeholder="Write your message..."
+                    <input
+                      type="email"
+                      id="email"
+                      autoComplete="email"
+                      placeholder="Your email address"
                       className="mb-2 w-full rounded-md focus:outline-none border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
-                    ></textarea>
+                      name="email"
+                    />
                   </div>
                 </div>
-                <div className="text-center">
-                  <button
-                    // type="submit"
-                    className="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0"
-                  >
-                    Send Message
-                  </button>
+                <div className="mx-0 mb-1 sm:mb-4">
+                  <label
+                    htmlFor="textarea"
+                    className="pb-1 text-xs uppercase tracking-wider"
+                  ></label>
+                  <textarea
+                    id="textarea"
+                    name="textarea"
+                    cols={30}
+                    rows={5}
+                    placeholder="Write your message..."
+                    className="mb-2 w-full rounded-md focus:outline-none border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                  ></textarea>
                 </div>
+              </div>
+              <div className="text-center">
+                <button
+                  // type="submit"
+                  className="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0"
+                >
+                  Send Message
+                </button>
+              </div>
               {/* </form> */}
             </div>
           </div>

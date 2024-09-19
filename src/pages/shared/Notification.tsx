@@ -1,5 +1,4 @@
 import { Bell } from 'lucide-react';
-import { Search } from "lucide-react";
 import {
   HoverCard,
   HoverCardContent,

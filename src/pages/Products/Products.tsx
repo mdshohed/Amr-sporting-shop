@@ -33,7 +33,7 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState([])
   const [currentBrand, setCurrentBrand] = useState([])
   const [selectedBrand, setSelectedBrand] = useState([])
-  const [searchValue, setSearchValue] = useState('');
+  const [ setSearchValue] = useState('');
 
   const [products, setProducts] = useState<TProduct[]>([]);
   const { data, error, isLoading } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });

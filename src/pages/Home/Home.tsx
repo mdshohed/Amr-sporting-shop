@@ -13,8 +13,6 @@ const Home = () => {
       <Category></Category>
 
       <ContactUs></ContactUs>
-      {/* <HeroSection />
-      <TopMovies /> */}
     </div>
   );
 }

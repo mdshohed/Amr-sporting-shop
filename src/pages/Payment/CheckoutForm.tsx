@@ -22,7 +22,7 @@ const CheckoutForm = () => {
   
 
   const [clientSecret, setClientSecret] = useState("");
-  const { tax, grandTotal } = useAppSelector((store) => store.cart);
+  const { vat, grandTotal } = useAppSelector((store) => store.cart);
   const [addPayment, { data, isLoading, isError, isSuccess }] = useAddPaymentMutation();
   const [addOrderInfo] = useAddOrderInfoMutation()
 
@@ -101,7 +101,7 @@ const CheckoutForm = () => {
           brand: item?.brand,
           orderQuantity: item?.quantity,
           unitPrice: item?.price,
-          tax: tax, 
+          tax: vat, 
         }))
         const orderData = {
           name: checkoutForm.name, 
@@ -115,7 +115,7 @@ const CheckoutForm = () => {
         if(res.statusCode===200&&res.success){
           setTimeout(()=>{},5000);
           dispatch(clearCart())
-          navigate('/success', { state: { transactionId: paymentIntent.id } });
+          navigate(`/success?transactionId=${paymentIntent.id}`,);
         }
         
         if(isError){
