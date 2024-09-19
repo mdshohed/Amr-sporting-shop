@@ -33,7 +33,7 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState([])
   const [currentBrand, setCurrentBrand] = useState([])
   const [selectedBrand, setSelectedBrand] = useState([])
-  const [ setSearchValue] = useState('');
+  const [ searchValue, setSearchValue] = useState('');
 
   const [products, setProducts] = useState<TProduct[]>([]);
   const { data, error, isLoading } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
@@ -143,12 +143,12 @@ const Products = () => {
     setSearchValue(e)
 
     // clear search filter
-    navigate('/all-sporting-goods');
-    setSelectedBrand([])
-    setSelectedCategory([]);
-    setRatingFilter({...ratingFilter, min:0, max:5});
-    let mxPrice = data.data.reduce((max: number, item: any) => item.price > max ? item.price : max, 0);
-    setPriceFilter({ ...priceFilter, maxPrice: mxPrice });
+    // navigate('/all-sporting-goods');
+    // setSelectedBrand([])
+    // setSelectedCategory([]);
+    // setRatingFilter({...ratingFilter, min:0, max:5});
+    // let mxPrice = data.data.reduce((max: number, item: any) => item.price > max ? item.price : max, 0);
+    // setPriceFilter({ ...priceFilter, maxPrice: mxPrice });
 
     // call serach function
     const newProduct = [...data.data];
