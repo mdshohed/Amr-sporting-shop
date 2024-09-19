@@ -8,6 +8,7 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/redux/hooks";
+import logo from '../../assets/logo/Amr-Sporting-logo.png'
 
 export default function Navbar() {
   const cardProducts = useAppSelector((state) => state.cart.products);
@@ -20,17 +21,19 @@ export default function Navbar() {
   };
 
   return (
-    <div className="bg-gray-800 sticky top-0 z-50 mb-4">
+    // <div className="bg-gray-800 sticky top-0 z-50 mb-4">
+    <div className="bg-gray-800 ">
       <div className="mx-auto container max-w-7xl px-4">
         <header className="flex  py-4 px-4 sm:px-4  min-h-[80px] tracking-wide relative z-50">
           <div className="flex flex-wrap items-center justify-between gap-4 w-full">
-            <Link to="/" className="text-2xl font-bold text-white">
-              {/* <img
-              src="https://readymadeui.com/readymadeui.svg"
+            {/* <Link to="/" className="text-2xl font-bold text-white"> */}
+            <Link to="/" >
+              <img
+              src={logo}
               alt="logo"
-              className="w-36"
-            /> */}
-              Amr-Sporing
+              className="w-28"
+            />
+              {/* Amr-Sporing */}
             </Link>
 
             <div
@@ -66,12 +69,12 @@ export default function Navbar() {
                 {/* <NavigationMenuItem> */}
                 <li className="mb-6 hidden max-lg:block text-2xl font-bold">
                   <Link to="/">
-                    {/* <img
-                    src="https://readymadeui.com/readymadeui.svg"
+                    <img
+                    src={logo}
                     alt="logo"
                     className="w-36"
-                  /> */}
-                    Amr-Sporting
+                  />
+                    {/* Amr-Sporting */}
                   </Link>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
@@ -90,7 +93,7 @@ export default function Navbar() {
                     className="hover:text-[#007bff] font-medium block "
                   >
                     {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                    All-Product
+                    All Product
                     {/* </NavigationMenuLink> */}
                   </Link>
                 </li>
@@ -100,14 +103,14 @@ export default function Navbar() {
                     className="hover:text-[#007bff] font-medium block "
                   >
                     {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                    Manage-Product
+                    Manage Product
                     {/* </NavigationMenuLink> */}
                   </Link>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link to="/about-us" className="hover:text-[#007bff] font-medium block ">
                     {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                    About-Us
+                    About Us
                     {/* </NavigationMenuLink> */}
                   </Link>
                 </li>

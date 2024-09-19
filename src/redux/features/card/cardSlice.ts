@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // Define the initial state using that type
- type TForm = {
+type TForm = {
   name: '',
   email: '',
   phoneNumber: '',
   deliveryAddress: '',
- }
+}
 const initialState = {
   products: [] as any,
   selectedItems: 0,

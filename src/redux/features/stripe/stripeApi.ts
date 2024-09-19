@@ -8,11 +8,6 @@ const stripeApi = baseApi.injectEndpoints({
         method: 'POST',
         body: orderInfo,
       }),
-      // transformResponse: (response) => {
-      //   return {
-      //     clientSecret: response.clientSecret, // Ensure clientSecret is returned
-      //   };
-      // },
       }
     ),
   })

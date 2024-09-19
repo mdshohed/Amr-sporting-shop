@@ -1,12 +1,14 @@
 
 
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { toast } from "sonner";
 
 
 const OrderSuccess = () => {
   // const location = useLocation();
   // const { transactionId } = location.state;
-
+  // toast.success('Order Successful')
   return (
     <section className="py-24 relative">
       <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">

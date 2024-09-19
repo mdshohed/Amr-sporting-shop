@@ -16,6 +16,8 @@
 - react-rating
 - react-photo-view
 - react-stripe.js
+- gsap
+
 
 
 

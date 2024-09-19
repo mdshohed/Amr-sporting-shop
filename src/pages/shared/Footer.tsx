@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+import logo from '../../assets/logo/Amr-Sporting-logo.png'
+
+
 export default function Footer() {
   return (
     <div>
@@ -27,14 +31,14 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
             <div>
-              {/* <a href="javascript:void(0)">
+              <Link to="/">
                 <img
-                  src="https://readymadeui.com/readymadeui-white.svg"
+                  src={logo}
                   alt="logo"
                   className="w-44"
                 />
-              </a> */}
-              <h5 className="text-2xl font-bold text-white">AmrSport</h5>
+              </Link>
+              {/* <h5 className="text-2xl font-bold text-white">AmrSport</h5> */}
               <ul className="mt-10 flex space-x-5">
                 <li>
                   <a href="javascript:void(0)">
@@ -114,14 +118,7 @@ export default function Footer() {
               </h4>
 
               <ul className="mt-6 space-y-5">
-                <li>
-                  <a
-                    href="javascript:void(0)"
-                    className="hover:text-white text-gray-300 text-sm"
-                  >
-                    Web Development
-                  </a>
-                </li>
+                
                 <li>
                   <a
                     href="javascript:void(0)"

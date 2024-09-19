@@ -19,8 +19,13 @@ import { Button } from "@/components/ui/button";
 import FilterBox from "@/components/FilterBox/FilterBox";
 import { Filter } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Products = () => {
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get('category');
+  const navigate = useNavigate();
+
   const [selectedValue, setSelectedValue] = useState('default'); 
   const [priceFilter, setPriceFilter] = useState({minPrice: 0, maxPrice: 0});
   const [ratingFilter, setRatingFilter] = useState({min: 0, max: 5}); 
@@ -31,7 +36,7 @@ const Products = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const [products, setProducts] = useState<TProduct[]>([]);
-  const { data, error } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
+  const { data, error, isLoading } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
 
   useEffect(() => {
     window.scrollTo({
@@ -40,7 +45,14 @@ const Products = () => {
     });
   }, []);
   
-
+  useEffect(()=>{
+    if(category){
+      setSelectedCategory([...selectedCategory, category])
+    }
+    else{
+      setSelectedCategory([])
+    }
+  },[category]);
   
   useEffect(() => {
     if (data && data.data) {
@@ -73,13 +85,12 @@ const Products = () => {
     setSelectedValue(value)
   };
 
-  const handleSetFilter = () =>{
+  const handleSetFilter = (search: string) =>{
     if (data && data.data) {
       let filterProducts: TProduct[] = [...data.data]; 
       // Price filter
-      const filterSearchProducts = filterProducts.filter( (product) => product.name.toLowerCase().includes(searchValue.toLowerCase()));
 
-      const priceFilterProducts = filterSearchProducts.filter( (item)=>( item.price>= priceFilter.minPrice && item.price<=priceFilter.maxPrice));
+      const priceFilterProducts = filterProducts.filter( (item)=>( item.price>= priceFilter.minPrice && item.price<=priceFilter.maxPrice));
       // Rating filter
       const ratingFilterProducts = priceFilterProducts.filter( (item)=>( item.rating>= ratingFilter.min && item.rating<=ratingFilter.max));
 
@@ -100,7 +111,7 @@ const Products = () => {
   }
 
   useEffect(()=>{
-    handleSetFilter();
+    handleSetFilter('');
   }, [selectedValue])
 
   useEffect(() => {
@@ -116,8 +127,7 @@ const Products = () => {
   }, [selectedCategory, selectedBrand]);
 
   const handleClearFilter = () =>{
-    console.log("data clear");
-    
+    navigate('/all-sporting-goods');
     let filterProducts: TProduct[] = [...data.data]; 
     setSelectedBrand([])
     setSelectedCategory([]);
@@ -131,8 +141,23 @@ const Products = () => {
 
   const handleSearchProduct = ( e: string) =>{
     setSearchValue(e)
+
+    // clear search filter
+    navigate('/all-sporting-goods');
+    setSelectedBrand([])
+    setSelectedCategory([]);
+    setRatingFilter({...ratingFilter, min:0, max:5});
+    let mxPrice = data.data.reduce((max: number, item: any) => item.price > max ? item.price : max, 0);
+    setPriceFilter({ ...priceFilter, maxPrice: mxPrice });
+
+    // call serach function
     const newProduct = [...data.data];
     const findProducts = newProduct.filter( (product) => product.name.toLowerCase().includes(e.toLowerCase()));
+    if (selectedValue === "low") {
+      findProducts.sort((a, b) => a.price - b.price); 
+    } else if (selectedValue === "high") {
+      findProducts.sort((a, b) => b.price - a.price); 
+    }
     setProducts(findProducts);
   }
 

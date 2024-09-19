@@ -7,148 +7,110 @@ const About = () => {
             Our Services
           </h2> */}
           <h1 className="text-5xl mb-4 lg:mb-8 justify-center flex">
-          Our Services
-        </h1>
+            Our Services
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="https://image3.jdomni.in/banner/13062021/42/5C/B1/45AC18B7F8EE562BC3DDB95D34_1623559815667.png?output-format=webp"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiNdz8jPwkXu13MVZtydnXpqNs0CUE4acH_w&s"
                 alt="wheat flour grinding"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
                 <h3 className="text-xl font-medium text-gray-800 mb-2">
-                  Wheat Flour Grinding
+                  Expert Product Selection
                 </h3>
                 <p className="text-gray-700 text-base">
-                  Our wheat flour grinding service provides fresh, high-quality
-                  flour to businesses and individuals in the area. We use
-                  state-of-the-art equipment to grind wheat into flour, and we
-                  offer a variety of flours to meet the needs of our customers.
+                  We offer a curated selection of high-quality sporting goods,
+                  handpicked to meet the diverse needs of athletes and fitness
+                  enthusiasts.
                 </p>
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1606854428728-5fe3eea23475?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JhbSUyMGZsb3VyfGVufDB8fDB8fHww"
+                src="https://media.istockphoto.com/id/1193905579/photo/employee-at-a-bio-grocery-shop-helping-a-customer.jpg?s=612x612&w=0&k=20&c=XUmLNBdnGujox2ANqoqOD_8n_Y08mgzMkg4TbD4GhjY="
                 alt="Coffee"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
                 <h3 className="text-xl font-medium text-gray-800 mb-2">
-                  Gram Flour Grinding
+                  Personalized Consultations
                 </h3>
                 <p className="text-gray-700 text-base">
-                  Our gram flour is perfect for a variety of uses, including
-                  baking, cooking, and making snacks. It is also a good source
-                  of protein and fiber.Our gram flour grinding service is a
-                  convenient and affordable way to get the freshest gram flour
-                  possible.
+                  Our knowledgeable staff is available for personalized
+                  consultations, helping you find the right equipment tailored
+                  to your specific goals and preferences.
                 </p>
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="https://image2.jdomni.in/banner/13062021/D2/99/0D/48D7F4AFC48C041DC8D80432E9_1623562146900.png?output-format=webp"
+                src="https://media.istockphoto.com/id/1280366064/photo/above-table-top-view-of-female-warehouse-worker-or-seller-packing-ecommerce-shipping-order.jpg?s=612x612&w=0&k=20&c=4d0ALB-3hOLJ_L-IZGvrjc6fqdmWZw2KrFp6fvNBlKo="
                 alt="Coffee"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
                 <h3 className="text-xl font-medium text-gray-800 mb-2">
-                  Jowar Flour Grinding
+                  Fast and Reliable Shipping
                 </h3>
                 <p className="text-gray-700 text-base">
-                  Our jowar grinding service is a convenient and affordable way
-                  to get fresh, high-quality jowar flour. We use
-                  state-of-the-art equipment to grind jowar into a fine powder,
-                  which is perfect for making roti, bread, and other dishes.
-                  <details>
-                    <summary>Read More</summary>
-                    <p>
-                      Our jowar flour is also a good source of protein and
-                      fiber, making it a healthy choice for your family.
-                    </p>
-                  </details>
+                  Enjoy quick and dependable shipping options, ensuring your
+                  gear arrives promptly so you can start your training without
+                  delay.
                 </p>
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1607672632458-9eb56696346b?q=80&w=1914&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://c8.alamy.com/comp/M0XPAR/customer-service-desk-that-handles-returns-and-complaints-in-a-publix-M0XPAR.jpg"
                 alt="Coffee"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
                 <h3 className="text-xl font-medium text-gray-800 mb-2">
-                  Chilli pounding
+                  Easy Returns and Exchanges
                 </h3>
                 <p className="text-gray-700 text-base">
-                  We specializes in the production of high-quality chili powder.
-                  Our chili powder is made from the finest, freshest chilies,
-                  and we use traditional pounding methods to ensure that our
-                  chili powder retains its full flavor and aroma.
-                  <details>
-                    <summary>Read More</summary>
-                    <p>
-                      {" "}
-                      We offer a variety of chili powder products, including
-                      mild, medium, and hot. We also offer custom blends to meet
-                      the specific needs of our customers.
-                    </p>
-                  </details>
+                  We prioritize your satisfaction with a hassle-free return and
+                  exchange policy, making it easy to get the right fit or
+                  product.
                 </p>
               </div>
             </div>
 
             <div className="bg-white rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg overflow-hidden min-h-full">
-              <div className="text-center text-white font-medium">
-                Special product
-              </div>
               <img
-                src="https://images.unsplash.com/photo-1556910110-a5a63dfd393c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmF3JTIwc3BhZ2hldHRpfGVufDB8fDB8fHww"
+                src="https://media.istockphoto.com/id/486140240/photo/football-fans-cheer-for-their-team-during-sports-event-stadium.jpg?s=612x612&w=0&k=20&c=okEVLKoPYDIQye6w7kRun6cvRw4gOENJfmtdlHnCcbM="
                 alt="Coffee"
                 className="w-full h-64 object-cover rounded-t-lg"
               />
               <div className="p-6 bg-white text-center rounded-b-lg md:min-h-full">
                 <h3 className="text-xl font-medium text-gray-800 mb-2">
-                  Flavoured Spaghetti
+                  Community Events and Sponsorships
                 </h3>
                 <p className="text-gray-700 text-base">
-                  <span className="font-medium underline">
-                    Our speciality is
-                  </span>
-                  Bappa Flour Mill offers a variety of flavored spaghetti dishes
-                  that are sure to tantalize your taste buds. We use only the
-                  freshest ingredients Our flavors include: Mango, spinach
+                  We actively engage with our local community by sponsoring
+                  events, teams, and initiatives that promote sports and fitness
+                  for all ages.
                 </p>
               </div>
             </div>
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="https://media.istockphoto.com/id/1265641298/photo/fried-papad.jpg?s=612x612&w=0&k=20&c=e_iEy4CTvU6Thn02zGgKt_TiSYAheCKmgfTF5j52ovU="
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRFoDW8eZybV4dXXwOB1Y2I5feVJ4IXHeHmw&s"
                 alt="papad"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
                 <h3 className="text-xl font-medium text-gray-800 mb-2">
-                  Rice Papad
+                  Sustainability Initiatives
                 </h3>
                 <p className="text-gray-700 text-base">
-                  Our company produces high-quality rice papad that is made with
-                  the finest ingredients. We use traditional methods to make our
-                  papad, which gives it a unique flavor and texture. Our papad
-                  is also gluten-free and vegan.
-                  <details>
-                    <summary>Read More</summary>
-                    <p>
-                      {" "}
-                      We offer a variety of rice papad flavors, including plain,
-                      salted, spicy, and flavored. We also offer a variety of
-                      sizes and shapes to choose from. Our papad is available in
-                      bulk or in individual packages.
-                    </p>
-                  </details>
+                  Committed to protecting the environment, we promote
+                  eco-friendly products and practices, helping you make
+                  sustainable choices in your sporting journey.
                 </p>
               </div>
             </div>
@@ -164,23 +126,21 @@ const About = () => {
                 About Us
               </h2>
               <p className="mt-4 text-gray-600 text-lg">
-                Bappa flour mill provides our customers with the highest quality
-                products and services. We offer a wide variety of flours and
-                spices to choose from, and we are always happy to help our
-                customers find the perfect products for their needs. We are
-                committed to providing our customers with the best possible
-                experience. We offer competitive prices, fast shipping, and
-                excellent customer service. We are also happy to answer any
-                questions that our customers may have about our products or
-                services. If you are looking for a flour and spices service
-                business that can provide you with the highest quality products
-                and services, then we are the company for you. We look forward
-                to serving you!
+                Welcome to Amr-Sporting-Shop, where our passion for sports meets
+                a commitment to quality and community. Founded in 2024, we
+                started with a simple mission: to inspire and empower athletes
+                of all levels by providing top-notch sporting goods that enhance
+                performance and promote an active lifestyle.We believe that
+                everyone, whether a beginner or a seasoned pro, deserves access
+                to the best equipment. That’s why we carefully curate our
+                product selection, ensuring that every item meets our rigorous
+                quality standards. Our team is dedicated to testing and
+                reviewing each product, so you can shop with confidence.
               </p>
             </div>
             <div className="mt-12 md:mt-0">
               <img
-                src="https://images.unsplash.com/photo-1531973576160-7125cd663d86"
+                src="https://costar.brightspotcdn.com/dims4/default/1b55774/2147483647/strip/true/crop/1280x712+0+0/resize/1280x712!/quality/100/?url=http%3A%2F%2Fcostar-brightspot.s3.us-east-1.amazonaws.com%2F40%2Fc6%2F3fdeedd44b4c9b96fa850363ae5a%2Fhos-min-footwear-deck.png"
                 alt="About Us Image"
                 className="object-cover rounded-lg shadow-md"
               />
@@ -189,7 +149,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="text-gray-700 body-font mt-10">
+      {/* <section className="text-gray-700 body-font mt-10">
         <div className="flex justify-center text-3xl font-bold text-gray-800 text-center">
           Why Us?
         </div>
@@ -204,7 +164,7 @@ const About = () => {
                   />
                 </div>
                 <h2 className="title-font font-regular text-2xl text-gray-900">
-                  Latest Milling Machinery
+                  Quality Assurance
                 </h2>
               </div>
             </div>
@@ -232,7 +192,7 @@ const About = () => {
                   />
                 </div>
                 <h2 className="title-font font-regular text-2xl text-gray-900">
-                  Time Efficiency
+                  Expert Guidance
                 </h2>
               </div>
             </div>
@@ -252,15 +212,403 @@ const About = () => {
             </div>
           </div>
         </div>
+      </section> */}
+
+      <section className="bg-white dark:bg-gray-900">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+          <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+            <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+              Our Team
+            </h2>
+            <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
+              Explore the whole collection of open-source web components and
+              elements built with the utility classes from Tailwind
+            </p>
+          </div>
+          <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+            <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+              <a >
+                <img
+                  className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+                  alt="Bonnie Avatar"
+                />
+              </a>
+              <div className="p-5">
+                <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <a >Bonnie Green</a>
+                </h3>
+                <span className="text-gray-500 dark:text-gray-400">
+                  Sales Specialist
+                </span>
+                <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+                An avid runner and cyclist, Emily brings a wealth of product knowledge to the team. She loves helping customers discover the best equipment to enhance their performance and enjoyment of their favorite sports.
+                </p>
+                <ul className="flex space-x-4 sm:mt-0">
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+              <a >
+                <img
+                  className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                  alt="Jese Avatar"
+                />
+              </a>
+              <div className="p-5">
+                <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <a >Jese Leos</a>
+                </h3>
+                <span className="text-gray-500 dark:text-gray-400">Product Expert</span>
+                <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+                With a background in sports science, Marcus specializes in athletic gear and footwear. He’s dedicated to educating customers about the latest technologies to improve their game and keep them safe while doing what they love.
+                </p>
+                <ul className="flex space-x-4 sm:mt-0">
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+              <a >
+                <img
+                  className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+                  alt="Michael Avatar"
+                />
+              </a>
+              <div className="p-5">
+                <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <a >Michael Gough</a>
+                </h3>
+                <span className="text-gray-500 dark:text-gray-400">
+                Product Expert
+                </span>
+                <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+                He’s dedicated to educating customers about the latest technologies to improve their game and keep them safe while doing what they love.
+
+                </p>
+                <ul className="flex space-x-4 sm:mt-0">
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+              <a >
+                <img
+                  className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png"
+                  alt="Sofia Avatar"
+                />
+              </a>
+              <div className="p-5">
+                <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <a >Lana Byrd</a>
+                </h3>
+                <span className="text-gray-500 dark:text-gray-400">
+                Customer Service Representative
+                </span>
+                <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+                Sophie is the friendly face of our store, always ready to assist. With a deep understanding of our products, she strives to create a welcoming environment for everyone who walks through our doors.
+                </p>
+                <ul className="flex space-x-4 sm:mt-0">
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="bg-gray-100">
         <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:py-20 lg:px-8">
           <div className="max-w-2xl lg:max-w-4xl mx-auto text-center">
-            <h2
-              className="text-3xl font-extrabold text-gray-900"
-              id="contactUs"
-            >
+            <h2 className="text-3xl font-bold text-gray-900" id="contactUs">
               Visit Our Location
             </h2>
             <p className="mt-3 text-lg text-gray-500">
@@ -274,7 +622,7 @@ const About = () => {
                   <div className="border-t border-gray-200 px-6 py-4">
                     <h3 className="text-lg font-bold text-gray-900">Contact</h3>
                     <p className="mt-1 font-bold text-gray-600">
-                      <a href="tel:+123">Phone: +91 123456789</a>
+                      <a href="tel:+123">Phone: (555) 123-4567</a>
                     </p>
                     <a className="flex m-1" href="tel:+919823331842">
                       <div className="flex-shrink-0">
@@ -303,13 +651,14 @@ const About = () => {
                       Our Address
                     </h3>
                     <p className="mt-1 text-gray-600">
-                      Sale galli, 60 foot road, Latur
+                      1230 Maecenas Street Donec Road New York, EEUU
                     </p>
                   </div>
                   <div className="border-t border-gray-200 px-6 py-4">
                     <h3 className="text-lg font-medium text-gray-900">Hours</h3>
                     <p className="mt-1 text-gray-600">
-                      Monday - Sunday : 2pm - 9pm
+                      Monday - Friday: 08:00 - 17:00 <br /> Saturday & Sunday:
+                      08:00 - 12:00
                     </p>
                   </div>
                 </div>
