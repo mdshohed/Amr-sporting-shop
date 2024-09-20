@@ -59,7 +59,7 @@ const Products = () => {
       setProducts(data.data);
 
       // max price find
-      let mxPrice = data.data.reduce((max: number, item: any) => item.price > max ? item.price : max, 0);
+      const mxPrice = data.data.reduce((max: number, item: any) => item.price > max ? item.price : max, 0);
       setPriceFilter({ ...priceFilter, maxPrice: mxPrice });
       
       // current Category

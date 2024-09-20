@@ -27,6 +27,7 @@ const ManageProduct = () => {
   const [modalMode, setModalMode] = useState("");
   const [isLoading, setIsLoading] = useState(true); // Local loading state
 
+  const [ addProductDetails, setAddProductDetails] = useState<TProduct>({} as TProduct)
   const [selectedProduct, setSelectedProduct] = useState<TProduct>({} as TProduct);
   const [products, setProducts] = useState<TProduct[]>([]);
   const { data, isLoading: apiLoading } = useGetAllProductsQuery(null);
@@ -51,28 +52,30 @@ const ManageProduct = () => {
 
   const handleAddProduct = async (e: any) => {
     e.preventDefault();
+    console.log("proudct", e.target, addProductDetails);
+    
     const form = e.target;
-    const name = form.name.value;
-    const stock = parseFloat(form.stock.value);
-    const description = form.description.value;
-    const category = form.category.value;
-    const brand = form.brand.value;
-    const price = parseFloat(form.price.value);
-    const rating = parseFloat(form.rating.value);
-    const productDescription = form.productDescription.value;
+    // const name = form.name.value;
+    // const stock = parseFloat(form.stock.value);
+    // const description = form.description.value;
+    // const category = form.category.value;
+    // const brand = form.brand.value;
+    // const price = parseFloat(form.price.value);
+    // const rating = parseFloat(form.rating.value);
+    // const productDescription = form.productDescription.value;
     const image = form.image.files[0];
 
     try {
       const image_url = await imageUpload(image);
       const productDetail: TProduct = {
-        name: name,
-        description: description,
-        category: category,
-        brand: brand,
-        stockQuantity: stock<0 ? 0 : stock,
-        rating: rating>5 ? 5: rating,
-        productDescription: productDescription,
-        price: price < 0 ? 0 : price,
+        name: addProductDetails.name,
+        description: addProductDetails.description,
+        category: addProductDetails.category,
+        brand: addProductDetails.brand,
+        stockQuantity: (addProductDetails.stockQuantity || 0)<0 ? 0 : addProductDetails.stockQuantity,
+        rating: (addProductDetails.rating||0)>5 ? 5: addProductDetails.rating,
+        productDescription: addProductDetails.productDescription,
+        price: (addProductDetails.price||0) < 0 ? 0 : addProductDetails.price,
         image: image_url,
       };
       for (const key in  productDetail) {
@@ -81,6 +84,8 @@ const ManageProduct = () => {
           return;
         }
       }
+      console.log("ProductDetails", productDetail);
+      
       const response = await addProduct(productDetail).unwrap();
       if (response.statusCode === 200 && response.success) {
         toast.success(response?.message);
@@ -149,6 +154,8 @@ const ManageProduct = () => {
   };
 
   const handleDeleteProduct = (id: string) => {
+    console.log("id", id);
+    
     deleteProduct(id);
     toast.success("Product Deleted Successful");
   };
@@ -450,13 +457,13 @@ const ManageProduct = () => {
                           Product Name
                         </label>
                         <input
-                          // onChange={(e) =>
-                          //   setProductDetails({
-                          //     ...productDetails,
-                          //     name: e.target.value,
-                          //   })
-                          // }
-                          // value={productDetails?.name}
+                          onChange={(e) =>
+                            setAddProductDetails({
+                              ...addProductDetails,
+                              name: e.target.value,
+                            })
+                          }
+                          value={addProductDetails?.name}
                           type="text"
                           name="name"
                           id="name"
@@ -472,13 +479,13 @@ const ManageProduct = () => {
                           Stock
                         </label>
                         <input
-                          // onChange={(e) =>
-                          //   setProductDetails({
-                          //     ...productDetails,
-                          //     stockQuantity: parseInt(e.target.value),
-                          //   })
-                          // }
-                          // value={productDetails?.stockQuantity}
+                          onChange={(e) =>
+                            setAddProductDetails({
+                              ...addProductDetails,
+                              stockQuantity: parseInt(e.target.value),
+                            })
+                          }
+                          value={addProductDetails?.stockQuantity}
                           type="number"
                           name="stock"
                           id="stock"
@@ -494,13 +501,13 @@ const ManageProduct = () => {
                           Description
                         </label>
                         <input
-                          // onChange={(e) =>
-                          //   setProductDetails({
-                          //     ...productDetails,
-                          //     description: e.target.value,
-                          //   })
-                          // }
-                          // value={productDetails?.description}
+                          onChange={(e) =>
+                            setAddProductDetails({
+                              ...addProductDetails,
+                              description: e.target.value,
+                            })
+                          }
+                          value={addProductDetails?.description}
                           type="text"
                           name="description"
                           id="description"
@@ -516,13 +523,13 @@ const ManageProduct = () => {
                           Category
                         </label>
                         <input
-                          // onChange={(e) =>
-                          //   setProductDetails({
-                          //     ...productDetails,
-                          //     category: e.target.value,
-                          //   })
-                          // }
-                          // value={productDetails?.category}
+                          onChange={(e) =>
+                            setAddProductDetails({
+                              ...addProductDetails,
+                              category: e.target.value,
+                            })
+                          }
+                          value={addProductDetails?.category}
                           type="text"
                           name="category"
                           id="category"
@@ -539,13 +546,13 @@ const ManageProduct = () => {
                           Brand
                         </label>
                         <input
-                          // onChange={(e) =>
-                          //   setProductDetails({
-                          //     ...productDetails,
-                          //     brand: e.target.value,
-                          //   })
-                          // }
-                          // value={productDetails?.brand}
+                          onChange={(e) =>
+                            setAddProductDetails({
+                              ...addProductDetails,
+                              brand: e.target.value,
+                            })
+                          }
+                          value={addProductDetails?.brand}
                           type="text"
                           name="brand"
                           id="brand"
@@ -562,13 +569,13 @@ const ManageProduct = () => {
                           Price
                         </label>
                         <input
-                          // onChange={(e) =>
-                          //   setProductDetails({
-                          //     ...productDetails,
-                          //     price: parseInt(e.target.value),
-                          //   })
-                          // }
-                          // value={productDetails?.price}
+                          onChange={(e) =>
+                            setAddProductDetails({
+                              ...addProductDetails,
+                              price: parseInt(e.target.value),
+                            })
+                          }
+                          value={addProductDetails?.price}
                           type="number"
                           name="price"
                           id="price"
@@ -584,13 +591,13 @@ const ManageProduct = () => {
                           Rating
                         </label>
                         <input
-                          // onChange={(e) =>
-                          //   setProductDetails({
-                          //     ...productDetails,
-                          //     rating: parseInt(e.target.value),
-                          //   })
-                          // }
-                          // value={productDetails?.rating}
+                          onChange={(e) =>
+                            setAddProductDetails({
+                              ...addProductDetails,
+                              rating: parseInt(e.target.value),
+                            })
+                          }
+                          value={addProductDetails?.rating}
                           type="number"
                           name="rating"
                           id="Rating"
@@ -607,13 +614,13 @@ const ManageProduct = () => {
                           productDescription
                         </label>
                         <textarea
-                          // onChange={(e) =>
-                          //   setProductDetails({
-                          //     ...productDetails,
-                          //     productDescription: e.target.value,
-                          //   })
-                          // }
-                          // value={productDetails?.productDescription}
+                          onChange={(e) =>
+                            setAddProductDetails({
+                              ...addProductDetails,
+                              productDescription: e.target.value,
+                            })
+                          }
+                          value={addProductDetails?.productDescription}
                           id="productDescription"
                           name="productDescription"
                           className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"

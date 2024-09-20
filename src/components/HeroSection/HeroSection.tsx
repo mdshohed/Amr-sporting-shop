@@ -55,7 +55,7 @@ export function HeroSection() {
         className=" overflow-hidden "
         plugins={[
           Autoplay({
-            delay: 4000,
+            delay: 10000,
           }),
         ]}
         opts={{
