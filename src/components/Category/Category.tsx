@@ -2,16 +2,17 @@ import { useGetAllProductsQuery } from "@/redux/features/products/productApi";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { TProduct } from "@/types/types";
 
 
 const Category = () => {
-  const { data: products, error} = useGetAllProductsQuery(null); 
+  const { data: products} = useGetAllProductsQuery(null); 
   const [categoryList, setCategory] = useState([]);
 
   useEffect(()=>{
     if( products && products.data){
-      const categoryList = products.data.reduce((acc, item) => {
-        if (!acc.some(categoryObj => categoryObj.category === item.category)) {
+      const categoryList = products.data.reduce((acc: any, item: TProduct) => {
+        if (!acc.some((categoryObj: any) => categoryObj.category === item.category)) {
           acc.push({ category: item.category, image: item.image });
         }
         return acc; 

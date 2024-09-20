@@ -26,17 +26,17 @@ const Products = () => {
   const category = searchParams.get('category');
   const navigate = useNavigate();
 
-  const [selectedValue, setSelectedValue] = useState('default'); 
-  const [priceFilter, setPriceFilter] = useState({minPrice: 0, maxPrice: 0});
-  const [ratingFilter, setRatingFilter] = useState({min: 0, max: 5}); 
-  const [currentCategory, setCurrentCategory] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState([])
-  const [currentBrand, setCurrentBrand] = useState([])
-  const [selectedBrand, setSelectedBrand] = useState([])
-  const [ searchValue, setSearchValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState<string>('default'); 
+  const [priceFilter, setPriceFilter] = useState<{minPrice: number, maxPrice: number}>({minPrice: 0, maxPrice: 0});
+  const [ratingFilter, setRatingFilter] = useState<{min: number, max: number}>({min: 0, max: 5}); 
+  const [currentCategory, setCurrentCategory] = useState<string[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([])
+  const [currentBrand, setCurrentBrand] = useState<string[]>([])
+  const [selectedBrand, setSelectedBrand] = useState<string[]>([])
+  // const [ searchValue, setSearchValue] = useState('');
 
   const [products, setProducts] = useState<TProduct[]>([]);
-  const { data, error, isLoading } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
+  const { data } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
 
   useEffect(() => {
     window.scrollTo({
@@ -63,14 +63,14 @@ const Products = () => {
       setPriceFilter({ ...priceFilter, maxPrice: mxPrice });
       
       // current Category
-      const categoryList = data.data.reduce((acc, item) => {
+      const categoryList = data.data.reduce((acc: any, item: TProduct) => {
         if (!acc.includes(item.category)) {acc.push(item.category);}
         return acc; 
       }, []);   
       setCurrentCategory(categoryList)
 
       // current Brand
-      const brandList = data.data.reduce((acc, item) => {
+      const brandList = data.data.reduce((acc: any, item: TProduct) => {
         if (!acc.includes(item.brand)) {
           acc.push(item.brand);
         }
@@ -85,41 +85,41 @@ const Products = () => {
     setSelectedValue(value)
   };
 
-  const handleSetFilter = (search: string) =>{
+  const handleSetFilter = () =>{
     if (data && data.data) {
       let filterProducts: TProduct[] = [...data.data]; 
       // Price filter
 
-      const priceFilterProducts = filterProducts.filter( (item)=>( item.price>= priceFilter.minPrice && item.price<=priceFilter.maxPrice));
+      const priceFilterProducts = filterProducts.filter( (item: TProduct)=>( (item?.price ? item.price: 0)>= priceFilter.minPrice && (item?.price ? item.price: 0)<=priceFilter.maxPrice));
       // Rating filter
-      const ratingFilterProducts = priceFilterProducts.filter( (item)=>( item.rating>= ratingFilter.min && item.rating<=ratingFilter.max));
+      const ratingFilterProducts = priceFilterProducts.filter( (item)=>( (item?.rating ? item.rating: 0)>= ratingFilter.min && (item?.rating ? item.rating: 0)<=ratingFilter.max));
 
-      const filtered = ratingFilterProducts.filter((product) => {
-        const categoryMatch = selectedCategory.length === 0 || selectedCategory.includes(product.category);
-        const brandMatch = selectedBrand.length === 0 || selectedBrand.includes(product.brand);
+      const filtered: TProduct[] = ratingFilterProducts.filter((product: TProduct) => {
+        const categoryMatch = selectedCategory.length === 0 ||(product?.category && selectedCategory.includes(product?.category));
+        const brandMatch = selectedBrand.length === 0 || (product?.brand && selectedBrand.includes(product?.brand));
         return categoryMatch && brandMatch;
       });
 
       // Sort by Price
       if (selectedValue === "low") {
-        filtered.sort((a, b) => a.price - b.price); 
+        filtered.sort((a, b ) => (a.price || 0)- (b.price || 0)); 
       } else if (selectedValue === "high") {
-        filtered.sort((a, b) => b.price - a.price); 
+        filtered.sort((a, b) => (b.price || 0) - (a.price || 0)); 
       }
       setProducts(filtered)
     }
   }
 
   useEffect(()=>{
-    handleSetFilter('');
+    handleSetFilter();
   }, [selectedValue])
 
   useEffect(() => {
     if( data&&data.data){
       let filterProducts: TProduct[] = [...data.data]; 
       const filtered = filterProducts.filter((product) => {
-        const categoryMatch = selectedCategory.length === 0 || selectedCategory.includes(product.category);
-        const brandMatch = selectedBrand.length === 0 || selectedBrand.includes(product.brand);
+        const categoryMatch = selectedCategory.length === 0 || (product.category && selectedCategory.includes(product.category));
+        const brandMatch = selectedBrand.length === 0 || (product.brand && selectedBrand.includes(product.brand));
         return categoryMatch && brandMatch;
       });
       setProducts(filtered);
@@ -136,11 +136,11 @@ const Products = () => {
     setPriceFilter({ ...priceFilter, maxPrice: mxPrice });
     setSelectedValue('default');
     setProducts(filterProducts)
-    setSearchValue('')
+    // setSearchValue('')
   }
 
   const handleSearchProduct = ( e: string) =>{
-    setSearchValue(e)
+    // setSearchValue(e)
 
     // clear search filter
     // navigate('/all-sporting-goods');
@@ -230,7 +230,7 @@ const Products = () => {
                 setRatingFilter={setRatingFilter}
                 handleSetFilter={handleSetFilter}
                 handleClearFilter={handleClearFilter}
-                selectedValue={selectedValue}
+                // selectedValue={selectedValue}
                 currentCategory={currentCategory}
                 setCurrentCategory={setCurrentCategory}
                 selectedCategory={selectedCategory}

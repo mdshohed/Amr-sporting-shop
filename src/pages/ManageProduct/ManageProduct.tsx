@@ -27,7 +27,7 @@ const ManageProduct = () => {
   const [modalMode, setModalMode] = useState("");
   const [isLoading, setIsLoading] = useState(true); // Local loading state
 
-  const [selectedProduct, setSelectedProduct] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState<TProduct>({} as TProduct);
   const [products, setProducts] = useState<TProduct[]>([]);
   const { data, isLoading: apiLoading } = useGetAllProductsQuery(null);
 
@@ -64,7 +64,7 @@ const ManageProduct = () => {
 
     try {
       const image_url = await imageUpload(image);
-      const productDetail = {
+      const productDetail: TProduct = {
         name: name,
         description: description,
         category: category,
@@ -75,8 +75,8 @@ const ManageProduct = () => {
         price: price < 0 ? 0 : price,
         image: image_url,
       };
-      for (const key in productDetail) {
-        if (productDetail[key] == "") {
+      for (const key in  productDetail) {
+        if (productDetail[key as keyof TProduct] == "") {
           toast.warning(`${key} field is incomplete!`);
           return;
         }
@@ -99,11 +99,15 @@ const ManageProduct = () => {
     console.log("call function");
 
     const image = form.image.files[0];
-    const updatedData = {};
+    const updatedData: any = {};
     for (const key in selectedProduct) {
       if (key == "_id" || key == "__v" || key == "updatedAt") continue;
-      updatedData[key] = selectedProduct[key];
+      if (key in selectedProduct) {
+        updatedData[key as keyof TProduct] = selectedProduct[key as keyof TProduct];
+      }      
+
     }
+    
     if (image) {
       const image_url = await imageUpload(image);
       updatedData.image = image_url;
@@ -926,7 +930,7 @@ const ManageProduct = () => {
                       </span>
                       <div className="flex justify-center items-center ">
                         <img
-                          src={selectedProduct?.image}
+                          src={ selectedProduct?.image}
                           className="w-1/2 p-5 rounded-xl"
                         ></img>
                         <label

@@ -1,6 +1,6 @@
 
 
-const StarRating = ({ rating }: {rating:number}) => {
+const StarRating = ({ rating }: {rating:number }) => {
   const totalStars = 5;
   const filledStars = Math.floor(rating>5 ? 5: rating);
   const hasHalfStar = rating % 1 >= 0.5;

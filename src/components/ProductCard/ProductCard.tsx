@@ -72,7 +72,7 @@ const ProductCard = ({ item }: { item: TProduct }) => {
                 </svg>
                 <span className="text-base font-medium text-white">{item?.rating}</span>
               </button> */}
-            <StarRating rating={item?.rating}></StarRating> {item?.rating}
+            <StarRating rating={item?.rating ? item?.rating : 0}></StarRating> {item?.rating}
           </div>
           
           <CardTitle className="mt-1 text-2xl font-normal">
@@ -94,7 +94,7 @@ const ProductCard = ({ item }: { item: TProduct }) => {
         </CardContent>
         <div className="text-gray-700 px-6">
           <button
-            onClick={()=>handleViewPage(item?._id)}
+            onClick={()=>handleViewPage(item?._id ?? '')}
             className="btn py-1 bg-white px-2 rounded-2xl border-2 hover:border-2 hover:border-lime-500"
           >
             View Details

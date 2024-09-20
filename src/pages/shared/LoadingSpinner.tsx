@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { ScaleLoader } from 'react-spinners'
 
-const LoadingSpinner = ({ smallHeight }) => {
+const LoadingSpinner = ({ smallHeight }: {smallHeight: any}) => {
   return (
     <div
       className={` ${smallHeight ? 'h-[250px]' : 'h-[70vh]'}
@@ -10,7 +10,7 @@ const LoadingSpinner = ({ smallHeight }) => {
       justify-center 
       items-center `}
     >
-      <ScaleLoader size={100} color='red' />
+      <ScaleLoader height={40} color='red' />
     </div>
   )
 }

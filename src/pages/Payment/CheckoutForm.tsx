@@ -7,12 +7,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
+
 const CheckoutForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate(); 
-  const [details, setDetails] = useState({name:'', email: ''})
+  const [details, setDetails] = useState<{name:string, email:string}>({name:'', email: ''})
   const [transactionId, setTransactionId] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
   const stripe = useStripe();
   const elements = useElements();
   const products = useAppSelector((store) => store.cart.products);
@@ -23,7 +24,7 @@ const CheckoutForm = () => {
 
   const [clientSecret, setClientSecret] = useState("");
   const { vat, grandTotal } = useAppSelector((store) => store.cart);
-  const [addPayment, { data, isLoading, isError, isSuccess }] = useAddPaymentMutation();
+  const [addPayment, {  isError }] = useAddPaymentMutation();
   const [addOrderInfo] = useAddOrderInfoMutation()
 
   useEffect(() => {
@@ -44,12 +45,12 @@ const CheckoutForm = () => {
     // Block native form submission.
     event.preventDefault();
     if(!details.name || !details.email){
-      for(const key in details){
-        if(!details[key]){
+      (Object.keys(details) as (keyof {name: string, email: string})[]).forEach((key) => {
+        if(!details[key] ){
           setError(`${key} field is incomplete!`);
           return; 
         }
-      }
+      })
     }
     if (!stripe || !elements) {
       return;
@@ -69,7 +70,7 @@ const CheckoutForm = () => {
 
     if (error) {
       console.log("[error]", error);
-      setError(error.message);
+      setError(error.message || "");
     } else {
       console.log("[PaymentMethod]", paymentMethod);
       setError("");

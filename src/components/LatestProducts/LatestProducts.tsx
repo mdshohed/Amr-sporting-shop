@@ -7,15 +7,17 @@ import LoadingSpinner from "@/pages/shared/LoadingSpinner";
 
 
 const LatestProducts = () => {
-  const { data, error, isLoading: apiLoading } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
+  const { data, isLoading: apiLoading } = useGetAllProductsQuery(undefined, { pollingInterval: 30000 });
   const [isLoading, setIsLoading] = useState(true); 
 
   const [latestProduct, setLatestProduct] = useState<TProduct[]>([]);
 
   useEffect(() => {
     if (data && data.data) {
-      const latest = [...data.data].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      setLatestProduct(latest);
+      const latest = [...data.data].sort((a: { createdAt: string }, b: { createdAt: string }) => {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
+          setLatestProduct(latest);
     }
   }, [data]);
 

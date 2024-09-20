@@ -10,27 +10,41 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FilterBox = ({
+interface FilterBoxProps {
+  priceFilter: {minPrice: number, maxPrice: number};
+  setPriceFilter: React.Dispatch<React.SetStateAction<{ minPrice: number; maxPrice: number }>>;
+  ratingFilter: {min: number, max: number}; 
+  setRatingFilter: React.Dispatch<React.SetStateAction<{ min: number; max: number }>>; 
+  handleSetFilter: () => void;
+  handleClearFilter: () => void;
+  currentCategory: string[]; 
+  setCurrentCategory: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedCategory: string[];
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string[]>>;
+  currentBrand: string[]; 
+  setCurrentBrand: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedBrand: string[];
+  setSelectedBrand: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const FilterBox: React.FC<FilterBoxProps> = ({
   priceFilter,
   setPriceFilter,
   ratingFilter,
   setRatingFilter,
   handleSetFilter,
   handleClearFilter,
-  selectedValue,
   currentCategory,
-  setCurrentCategory,
   selectedCategory,
   setSelectedCategory,
   currentBrand,
-  setCurrentBrand,
   selectedBrand,
   setSelectedBrand,
 }) => {
-  const handleSelectCategory = (value) => {
+  const handleSelectCategory = (value: string) => {
     setSelectedCategory((prevSelected) => {
       if (prevSelected.includes(value)) {
-        return prevSelected.filter((item) => item !== value);
+        return prevSelected.filter((item: string) => item !== value);
       } else {
         return [...prevSelected, value];
       }
@@ -40,7 +54,7 @@ const FilterBox = ({
   const handleSelectBrand = (value: string) => {    
     setSelectedBrand((prevSelected) => {
       if (prevSelected.includes(value)) {
-        return prevSelected.filter((item) => item !== value);
+        return prevSelected.filter((item: string) => item !== value);
       } else {
         return [...prevSelected, value];
       }
@@ -70,7 +84,7 @@ const FilterBox = ({
                       <input
                         type="number"
                         min={0}
-                        value={priceFilter.minPrice ?? ""}
+                        value={priceFilter.minPrice }
                         onChange={(e) =>
                           setPriceFilter({
                             ...priceFilter,
@@ -85,7 +99,7 @@ const FilterBox = ({
                       <label>Max Price</label>
                       <input
                         type="number"
-                        value={priceFilter.maxPrice ?? ""}
+                        value={priceFilter.maxPrice }
                         onChange={(e) =>
                           setPriceFilter({
                             ...priceFilter,
@@ -175,7 +189,7 @@ const FilterBox = ({
             <div className="py-4">
               <AccordionTrigger>Filter by Category</AccordionTrigger>
               <AccordionContent>
-                {currentCategory?.map((item) => (
+                {currentCategory?.map((item: string) => (
                     <div className="flex items-center space-x-2 mt-3 ms-3">
                       <Checkbox
                        id={item}
@@ -203,7 +217,7 @@ const FilterBox = ({
             <div className="py-4">
               <AccordionTrigger>Filter by Brand</AccordionTrigger>
               <AccordionContent>
-                {currentBrand?.map((item) => (
+                { currentBrand && currentBrand?.map((item: string) => (
                   <div className="flex items-center space-x-2 mt-3 ms-3">
                     <Checkbox
                       id={item}

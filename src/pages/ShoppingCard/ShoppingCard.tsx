@@ -14,7 +14,7 @@ const ShoppingCard = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.cart.products);
 
-  const { vat, vatRate, taxRate, grandTotal, totalPrice, selectedItems } = useAppSelector((store) => store.cart);
+  const { vat, vatRate, grandTotal, totalPrice } = useAppSelector((store) => store.cart);
 
 
   console.log(vatRate, vatRate * 100);

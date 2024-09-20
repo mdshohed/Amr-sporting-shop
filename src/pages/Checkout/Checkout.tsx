@@ -6,15 +6,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
+interface DeliveryDetails {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  deliveryAddress: string;
+}
+
 const Checkout = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((store) => store.cart.products);
-  const [addOrderInfo, { data, isError, isSuccess }] =
+  const [addOrderInfo, { isError }] =
     useAddOrderInfoMutation();
 
-  const { vat, taxRate, grandTotal, totalPrice, selectedItems } =
+  const { vat, grandTotal, totalPrice } =
     useAppSelector((store) => store.cart);
-  const [deliveryDetails, setDeliveryDetails] = useState({
+  const [deliveryDetails, setDeliveryDetails] = useState<DeliveryDetails>({
     name: "",
     email: "",
     phoneNumber: "",
@@ -24,11 +31,11 @@ const Checkout = () => {
 
   const navigate = useNavigate();
   const handlePlaceOrder = async () => {
-    for (const key in deliveryDetails) {
-      if (deliveryDetails[key] === "") {
+    (Object.keys(deliveryDetails) as (keyof DeliveryDetails)[]).forEach((key) => {
+      if (deliveryDetails[key] === '') {
         return toast.warning(`${key} field is empty`);
       }
-    }
+    })
     if (paymentType == "cash") {
       const orderProduct = products.map((item: any) => ({
         productId: item?._id,
