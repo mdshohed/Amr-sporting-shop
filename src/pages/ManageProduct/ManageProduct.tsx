@@ -120,9 +120,16 @@ const ManageProduct = () => {
       if (res.statusCode === 200 && res.success) {
         toast.success(`${res.message}`);
       } else toast.error("Product Update Error!");
-    } 
-    else {
-      toast.error("Product Image Update Error!");
+    } else {
+      const res = await updateProduct({
+        id: selectedProduct?._id,
+        updatedProduct: updatedData,
+      }).unwrap();
+
+      if (res.statusCode === 200 && res.success) {
+        toast.success(`${res.message}`);
+      } 
+      else toast.error("Product Update Error!");
     }
 
     // const updatedData = {};
