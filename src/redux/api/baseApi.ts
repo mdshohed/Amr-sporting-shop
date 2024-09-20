@@ -5,7 +5,7 @@ export const baseApi = createApi({
   tagTypes: ['products'],
   baseQuery: fetchBaseQuery({
     // baseUrl: "http://localhost:5000/api",
-    baseUrl: "https://amr-sporting-shop-server.vercel.app",
+    baseUrl: "https://amr-sporting-shop-server.vercel.app/api",
   }),
   endpoints: () => ({}),
 });

@@ -26,6 +26,20 @@
 ## payment Method 
 - Stripe
 
+
+### Link: 
+<div >
+
+- Live Deployment Link (Server): <a href="https://amr-sporting-shop.vercel.app/" target="_blank">https://amr-sporting-shop.vercel.app/</a>
+
+- GitHub Repository Links (Client): <a href="https://github.com/mdshohed/Amr-sporting-shop" target="_blank">https://github.com/mdshohed/Amr-sporting-shop</a>
+
+- Live Repository Links (Server): <a href="https://amr-sporting-shop-server.vercel.app/" target="_blank">https://amr-sporting-shop-server.vercel.app/</a>
+
+- Project Overview Video:  <a href="" target="_blank"></a>
+
+</div>
+
 ### NPM-Project
 - react-router-dom
 - react-hooks-form
